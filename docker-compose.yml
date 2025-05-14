@@ -1,0 +1,42 @@
+version: "3.8"
+
+services:
+  mongo:
+    image: mongo
+    container_name: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+  gateway:
+    build:
+      context: ./apps/gateway
+    ports:
+      - "3000:3000"
+    depends_on:
+      - auth
+      - event
+
+  auth:
+    build:
+      context: ./apps/auth
+    ports:
+      - "3001:3001"
+    environment:
+      - MONGODB_URI=mongodb://mongo:27017/auth
+    depends_on:
+      - mongo
+
+  event:
+    build:
+      context: ./apps/event
+    ports:
+      - "3002:3002"
+    environment:
+      - MONGODB_URI=mongodb://mongo:27017/event
+    depends_on:
+      - mongo
+
+volumes:
+  mongo_data:
