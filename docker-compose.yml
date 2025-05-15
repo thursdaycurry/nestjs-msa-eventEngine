@@ -12,6 +12,7 @@ services:
   gateway:
     build:
       context: ./apps/gateway
+    container_name: gateway
     ports:
       - "3000:3000"
     depends_on:
@@ -21,8 +22,9 @@ services:
   auth:
     build:
       context: ./apps/auth
-    ports:
-      - "3001:3001"
+    container_name: auth
+    # ports:
+    #   - "3001:3001"
     environment:
       - MONGODB_URI=mongodb://mongo:27017/auth
     depends_on:
@@ -31,8 +33,9 @@ services:
   event:
     build:
       context: ./apps/event
-    ports:
-      - "3002:3002"
+    container_name: event
+    # ports:
+    #   - "3002:3002"
     environment:
       - MONGODB_URI=mongodb://mongo:27017/event
     depends_on:
