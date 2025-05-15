@@ -103,3 +103,9 @@ $ npm run test:cov
 ## License
 
 Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+
+
+## Thought
+dto validation은 어디서 해야하나
+- dto validation 파이프를 gateway에 둬야하나 아니면 Auth에 둬야하나? gateway 두면 검증된 데이터만 네트워크 전송을 쓰기 때문에 트래픽 부담이 줄지만, 그렇게되면 auth의 dto가 gateway에 존재함에 따라 관심사 분리 원칙에 위배된다.
+하지만 gateway은 라우팅도 하지만 불필요한 요청을 방지하는 관문 역할 한다는 점에서 validation하는 것이 적절하다. 
