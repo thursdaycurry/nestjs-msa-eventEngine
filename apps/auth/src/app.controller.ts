@@ -3,13 +3,22 @@ import { AppService } from './app.service';
 import { MessagePattern } from '@nestjs/microservices';
 import { InjectConnection } from '@nestjs/mongoose';
 import { Connection } from 'mongoose';
+import { AuthService } from './apis/auth/auth.service';
+import { User } from './apis/auth/schemas/user.schema';
 
 @Controller()
 export class AppController {
   constructor(
     private readonly appService: AppService,
     @InjectConnection() private readonly connection: Connection,
+    private readonly authService: AuthService,
   ) {}
+
+  @MessagePattern({ cmd: 'signup' })
+  async signup(createUserDto) {
+    const result: User = await this.authService.signup(createUserDto);
+    return result;
+  }
 
   @MessagePattern({ cmd: 'health' })
   healthCheck() {
