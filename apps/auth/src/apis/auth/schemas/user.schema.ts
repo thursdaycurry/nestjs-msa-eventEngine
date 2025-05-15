@@ -6,6 +6,13 @@ export enum LoginType {
   SSO = 'sso',
 }
 
+export enum UserRole {
+  USER = 'USER',
+  OPERATOR = 'OPERATOR',
+  AUDITOR = 'AUDITOR',
+  ADMIN = 'ADMIN',
+}
+
 @Schema({ timestamps: true })
 export class User extends Document {
   @Prop({ required: true, unique: true })
@@ -19,6 +26,9 @@ export class User extends Document {
 
   @Prop({ required: true, enum: LoginType })
   loginType: LoginType;
+
+  @Prop({ required: true, enum: UserRole, default: UserRole.USER })
+  role: UserRole;
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);
