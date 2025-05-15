@@ -1,28 +1,16 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { ClientsModule, Transport } from '@nestjs/microservices';
+import { UserModule } from './apis/user/user.module';
+import { ClientsModule } from './common/clients/clients.module';
 
 @Module({
   imports: [
-    ClientsModule.register([
-      {
-        name: 'AUTH_SERVICE',
-        transport: Transport.TCP,
-        options: {
-          host: 'auth',
-          port: 3001,
-        },
-      },
-      {
-        name: 'EVENT_SERVICE',
-        transport: Transport.TCP,
-        options: {
-          host: 'event',
-          port: 3002,
-        },
-      },
-    ]),
+    // for importing microservices
+    ClientsModule,
+
+    // for importing modules
+    UserModule,
   ],
   controllers: [AppController],
   providers: [AppService],
