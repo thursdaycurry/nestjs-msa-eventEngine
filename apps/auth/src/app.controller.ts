@@ -16,7 +16,13 @@ export class AppController {
 
   @MessagePattern({ cmd: 'signup' })
   async signup(createUserDto) {
-    const result: User = await this.authService.signup(createUserDto);
+    const result = await this.authService.signup(createUserDto);
+    return result;
+  }
+
+  @MessagePattern({ cmd: 'signin' })
+  async signin(signinUserDto) {
+    const result = await this.authService.signin(signinUserDto);
     return result;
   }
 
