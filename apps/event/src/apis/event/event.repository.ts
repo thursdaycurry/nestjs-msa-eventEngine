@@ -16,6 +16,27 @@ export class EventRepository {
     private readonly rewardItemModel: Model<RewardItem>,
   ) {}
 
+  async getEventList() {
+    const eventList = await this.eventModel.find().exec();
+    return eventList;
+  }
+
+  async getEventDetail(eventId: string) {
+    const eventDetail = await this.eventModel
+      .findById(eventId)
+      .populate({
+        path: 'rewardId',
+        populate: {
+          path: 'rewardItemIds',
+          populate: {
+            path: 'item',
+          },
+        },
+      })
+      .exec();
+    return eventDetail;
+  }
+
   async createEvent(createEventDto) {
     const event = new this.eventModel(createEventDto);
 

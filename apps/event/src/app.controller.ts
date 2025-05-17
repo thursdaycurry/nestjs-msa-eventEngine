@@ -11,6 +11,18 @@ export class AppController {
     @InjectConnection() private readonly connection: Connection,
   ) {}
 
+  @MessagePattern({ cmd: 'getEventList' })
+  async getEventList() {
+    const result = await this.eventService.getEventList();
+    return result;
+  }
+
+  @MessagePattern({ cmd: 'getEventDetail' })
+  async getEventDetail(eventId: string) {
+    const result = await this.eventService.getEventDetail(eventId);
+    return result;
+  }
+
   @MessagePattern({ cmd: 'createEvent' })
   async createEvent(createEventDto) {
     const result = await this.eventService.createEvent(createEventDto);

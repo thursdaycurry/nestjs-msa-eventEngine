@@ -6,6 +6,16 @@ import { calcStatus } from 'src/common/util/helper';
 export class EventService {
   constructor(private readonly eventRepository: EventRepository) {}
 
+  async getEventList() {
+    const eventList = await this.eventRepository.getEventList();
+    return eventList;
+  }
+
+  async getEventDetail(eventId: string) {
+    const eventDetail = await this.eventRepository.getEventDetail(eventId);
+    return eventDetail;
+  }
+
   async createEvent(createEventDto) {
     const {
       category,
