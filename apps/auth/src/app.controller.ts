@@ -26,6 +26,12 @@ export class AppController {
     return result;
   }
 
+  @MessagePattern({ cmd: 'updateUserRole' })
+  async updateUserRole(updateUserRoleDto) {
+    const result = await this.authService.updateUserRole(updateUserRoleDto);
+    return result;
+  }
+
   @MessagePattern({ cmd: 'health' })
   healthCheck() {
     const mongoStatus = this.connection.readyState;

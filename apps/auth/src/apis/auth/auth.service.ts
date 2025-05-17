@@ -75,17 +75,50 @@ export class AuthService {
     }
 
     // JWT
-    const payload = { username: foundUser?.name, sub: foundUser?.id };
+
+    const coreUserInfo = {
+      name: foundUser?.name,
+      email: foundUser?.email,
+      role: foundUser?.role,
+    };
+
+    const payload = {
+      sub: foundUser?.id,
+      ...coreUserInfo,
+    };
     const access_token: string = await this.generateAccessToken(payload);
 
     return {
       access_token,
+      user: coreUserInfo,
+    };
+  }
+
+  async updateUserRole(updateUserRoleDto) {
+    const { userId, newRole } = updateUserRoleDto;
+
+    const foundUser = await this.authRepository.findById(userId);
+    const isUserExist: boolean = !!foundUser;
+
+    if (!isUserExist) {
+      throw new NotFoundException('USER_NOT_FOUND');
+    }
+
+    const updatedUser: User | null = await this.authRepository.updateUserRole(
+      userId,
+      newRole,
+    );
+
+    const result = {
       user: {
-        name: foundUser?.name,
-        email: foundUser?.email,
-        role: foundUser?.role,
+        name: updatedUser?.name,
+        email: updatedUser?.email,
+        prevRole: updatedUser?.role,
+        newRole,
       },
     };
+
+    return result;
   }
 
   private async hashPassword(password: string): Promise<string> {

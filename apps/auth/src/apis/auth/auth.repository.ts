@@ -13,6 +13,10 @@ export class AuthRepository {
     return this.userModel.findOne({ email });
   }
 
+  async findById(id: string): Promise<User | null> {
+    return this.userModel.findById(id);
+  }
+
   async createUser(createUserDto): Promise<User> {
     const { email, password, name, loginType } = createUserDto;
 
@@ -24,5 +28,9 @@ export class AuthRepository {
     });
 
     return createdUser.save();
+  }
+
+  async updateUserRole(userId: string, newRole: string): Promise<User | null> {
+    return this.userModel.findByIdAndUpdate(userId, { role: newRole });
   }
 }
