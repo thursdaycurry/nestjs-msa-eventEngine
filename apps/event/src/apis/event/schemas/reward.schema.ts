@@ -16,7 +16,7 @@ export class Reward extends Document {
     ref: 'RewardItem',
     required: true,
   })
-  rewardItems: (RewardItem | string)[];
+  rewardItemIds: (RewardItem | string)[];
 }
 
 export const RewardSchema = SchemaFactory.createForClass(Reward);

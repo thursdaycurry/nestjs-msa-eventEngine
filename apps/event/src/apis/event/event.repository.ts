@@ -23,13 +23,7 @@ export class EventRepository {
   }
 
   async createReward(createRewardDto) {
-    const { title, description, rewardItems } = createRewardDto;
-
-    const reward = new this.rewardModel({
-      title,
-      description,
-      rewardItems,
-    });
+    const reward = new this.rewardModel(createRewardDto);
 
     return await reward.save();
   }
