@@ -12,14 +12,15 @@ import { Roles } from 'src/common/decorators/roles.decorator';
 export class EventController {
   constructor(private readonly eventService: EventService) {}
 
-  // @UseGuards(JwtAuthGuard, RolesGuard)
-  // @Roles(UserRole.ADMIN, UserRole.OPERATOR)
-
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(UserRole.ADMIN, UserRole.OPERATOR)
   @Get()
   async getEventList() {
     return await this.eventService.getEventList();
   }
 
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(UserRole.ADMIN, UserRole.OPERATOR)
   @Get(':eventId')
   async getEventDetail(@Param('eventId') eventId: string) {
     return await this.eventService.getEventDetail(eventId);
