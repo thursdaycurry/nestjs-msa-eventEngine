@@ -7,6 +7,7 @@ import { PassportModule } from '@nestjs/passport';
 import { JwtModule } from '@nestjs/jwt';
 import { JwtStrategy } from './common/strategies/jwt.strategy';
 import { AuthModule } from './apis/auth/auth.module';
+import { EventModule } from './apis/event/event.module';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { AuthModule } from './apis/auth/auth.module';
 
     // for importing modules
     AuthModule,
+    EventModule,
     PassportModule,
     JwtModule.register({
       secret: process.env.JWT_SECRET,
