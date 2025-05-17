@@ -4,7 +4,8 @@ import { MessagePattern } from '@nestjs/microservices';
 import { InjectConnection } from '@nestjs/mongoose';
 import { Connection } from 'mongoose';
 import { AuthService } from './apis/auth/auth.service';
-import { User } from './apis/auth/schemas/user.schema';
+import { EventEmitter2 } from '@nestjs/event-emitter';
+import { AUTH_EVENT_TYPE } from './common/constants/listener';
 
 @Controller()
 export class AppController {
@@ -12,6 +13,7 @@ export class AppController {
     private readonly appService: AppService,
     @InjectConnection() private readonly connection: Connection,
     private readonly authService: AuthService,
+    private readonly eventEmitter: EventEmitter2,
   ) {}
 
   @MessagePattern({ cmd: 'signup' })
@@ -23,6 +25,11 @@ export class AppController {
   @MessagePattern({ cmd: 'signin' })
   async signin(signinUserDto) {
     const result = await this.authService.signin(signinUserDto);
+
+    const { user } = result;
+    this.eventEmitter.emit(AUTH_EVENT_TYPE.USER_SIGNIN, {
+      userId: user?.userId,
+    });
     return result;
   }
 

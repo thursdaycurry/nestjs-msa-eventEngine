@@ -1,0 +1,3 @@
+export enum AUTH_EVENT_TYPE {
+  USER_SIGNIN = 'USER.SIGNIN',
+}
