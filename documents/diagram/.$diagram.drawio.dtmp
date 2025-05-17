@@ -255,7 +255,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="8b-MJXN457PTxkRw0Qc4" name="erd">
-    <mxGraphModel dx="1183" dy="849" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
+    <mxGraphModel dx="1113" dy="799" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -278,25 +278,37 @@
           <mxGeometry y="150" width="140" height="30" as="geometry" />
         </mxCell>
         <mxCell id="3McGipPH9zvKThW0-69M-10" value="Event" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="550" y="210" width="200" height="320" as="geometry" />
+          <mxGeometry x="110" y="900" width="240" height="330" as="geometry" />
         </mxCell>
-        <mxCell id="3McGipPH9zvKThW0-69M-11" value="_id: string&amp;nbsp;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="3McGipPH9zvKThW0-69M-10">
-          <mxGeometry y="30" width="200" height="30" as="geometry" />
+        <mxCell id="3McGipPH9zvKThW0-69M-11" value="_id(PK)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="3McGipPH9zvKThW0-69M-10">
+          <mxGeometry y="30" width="240" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="3McGipPH9zvKThW0-69M-12" value="title: &quot;7일 연속 로그인&quot;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="3McGipPH9zvKThW0-69M-10">
-          <mxGeometry y="60" width="200" height="30" as="geometry" />
+        <mxCell id="NM6ktvTFHllRgesOjWK6-1" value="category: LOGIN, PURCHASE, INVITE, CUSTOM" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="3McGipPH9zvKThW0-69M-10">
+          <mxGeometry y="60" width="240" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="yQIPq121j_mAOBxUH6vE-1" value="title: &quot;7일 연속 로그인&quot;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="3McGipPH9zvKThW0-69M-10">
+          <mxGeometry y="90" width="240" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="3McGipPH9zvKThW0-69M-12" value="desciption: &#39;7일 연속 로그인할 경우 리워드&#39;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="3McGipPH9zvKThW0-69M-10">
+          <mxGeometry y="120" width="240" height="30" as="geometry" />
         </mxCell>
         <mxCell id="3McGipPH9zvKThW0-69M-13" value="startDate: &quot;20250517&quot;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="3McGipPH9zvKThW0-69M-10">
-          <mxGeometry y="90" width="200" height="30" as="geometry" />
+          <mxGeometry y="150" width="240" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="3McGipPH9zvKThW0-69M-17" value="endDate: &quot;2025" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="3McGipPH9zvKThW0-69M-10">
-          <mxGeometry y="120" width="200" height="30" as="geometry" />
+        <mxCell id="3McGipPH9zvKThW0-69M-17" value="endDate: &quot;20250801" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="3McGipPH9zvKThW0-69M-10">
+          <mxGeometry y="180" width="240" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="x167UjpiMIZg5SlnbnZS-1" value="status: &#39;ON&#39; | &#39;OFF&#39;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="3McGipPH9zvKThW0-69M-10">
-          <mxGeometry y="150" width="200" height="30" as="geometry" />
+        <mxCell id="x167UjpiMIZg5SlnbnZS-1" value="status: &#39;ACTIVE | INACTIVE&#39;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="3McGipPH9zvKThW0-69M-10">
+          <mxGeometry y="210" width="240" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="x167UjpiMIZg5SlnbnZS-2" value="condition:&amp;nbsp;&lt;div&gt;- during startDate and endDate, sequence of days that user loggedin is longer than 7&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="3McGipPH9zvKThW0-69M-10">
-          <mxGeometry y="180" width="200" height="140" as="geometry" />
+        <mxCell id="NM6ktvTFHllRgesOjWK6-3" value="triggerType: SINGLE, STREAK, COUNT" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="3McGipPH9zvKThW0-69M-10">
+          <mxGeometry y="240" width="240" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NM6ktvTFHllRgesOjWK6-46" value="goal: 7" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="3McGipPH9zvKThW0-69M-10">
+          <mxGeometry y="270" width="240" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NM6ktvTFHllRgesOjWK6-34" value="reward (FK)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="3McGipPH9zvKThW0-69M-10">
+          <mxGeometry y="300" width="240" height="30" as="geometry" />
         </mxCell>
         <mxCell id="KB3XyEXscuCAC4h__FKh-1" value="authEvent" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="190" y="245" width="180" height="150" as="geometry" />
@@ -320,13 +332,66 @@
           <mxGeometry x="220" y="60" width="60" height="80" as="geometry" />
         </mxCell>
         <mxCell id="KB3XyEXscuCAC4h__FKh-9" value="Event&lt;div&gt;DB&lt;/div&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;" vertex="1" parent="1">
-          <mxGeometry x="720" y="80" width="60" height="80" as="geometry" />
+          <mxGeometry x="840" y="10" width="60" height="80" as="geometry" />
         </mxCell>
         <mxCell id="KB3XyEXscuCAC4h__FKh-10" value="users collection" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="40" y="170" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="KB3XyEXscuCAC4h__FKh-13" value="login-history collection" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="KB3XyEXscuCAC4h__FKh-13" value="auth-history collection" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="200" y="170" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="NM6ktvTFHllRgesOjWK6-6" value="{&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;category: LOGIN&lt;br&gt;&lt;/div&gt;&lt;div&gt;triggerType: SREAK&lt;/div&gt;&lt;div&gt;goal: 7,&lt;/div&gt;&lt;div&gt;reward: &#39;LOGIN_7DAY_REWARD&#39;&lt;/div&gt;&lt;div&gt;}&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="870" y="70" width="210" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="NM6ktvTFHllRgesOjWK6-23" value="Item" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="690" y="1330" width="100" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="NM6ktvTFHllRgesOjWK6-24" value="_id: string&amp;nbsp;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="NM6ktvTFHllRgesOjWK6-23">
+          <mxGeometry y="30" width="100" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NM6ktvTFHllRgesOjWK6-25" value="itemName" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="NM6ktvTFHllRgesOjWK6-23">
+          <mxGeometry y="60" width="100" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NM6ktvTFHllRgesOjWK6-27" value="description" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="NM6ktvTFHllRgesOjWK6-23">
+          <mxGeometry y="90" width="100" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NM6ktvTFHllRgesOjWK6-48" value="RewardItem" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="560" y="1290" width="90" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="NM6ktvTFHllRgesOjWK6-49" value="_id (PK)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="NM6ktvTFHllRgesOjWK6-48">
+          <mxGeometry y="30" width="90" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NM6ktvTFHllRgesOjWK6-50" value="itemId (FK)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="NM6ktvTFHllRgesOjWK6-48">
+          <mxGeometry y="60" width="90" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NM6ktvTFHllRgesOjWK6-51" value="quantity" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="NM6ktvTFHllRgesOjWK6-48">
+          <mxGeometry y="90" width="90" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NM6ktvTFHllRgesOjWK6-53" value="Reward" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="380" y="1190" width="90" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="NM6ktvTFHllRgesOjWK6-54" value="_id: string&amp;nbsp;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="NM6ktvTFHllRgesOjWK6-53">
+          <mxGeometry y="30" width="90" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NM6ktvTFHllRgesOjWK6-56" value="rewardTitle" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="NM6ktvTFHllRgesOjWK6-53">
+          <mxGeometry y="60" width="90" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NM6ktvTFHllRgesOjWK6-57" value="rewardItems[]" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="NM6ktvTFHllRgesOjWK6-53">
+          <mxGeometry y="90" width="90" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NM6ktvTFHllRgesOjWK6-59" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="NM6ktvTFHllRgesOjWK6-34">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="380" y="1265" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="NM6ktvTFHllRgesOjWK6-60" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="NM6ktvTFHllRgesOjWK6-57" target="NM6ktvTFHllRgesOjWK6-49">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="NM6ktvTFHllRgesOjWK6-61" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="NM6ktvTFHllRgesOjWK6-50" target="NM6ktvTFHllRgesOjWK6-24">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="NM6ktvTFHllRgesOjWK6-64" value="category(LOGIN)을 STREAK 7하면 리워드를 준다.&lt;div&gt;리워드는 item들의 수만큼의 RewardItem이 포함된다&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="70" y="1223" width="280" height="40" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
