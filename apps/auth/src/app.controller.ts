@@ -16,7 +16,25 @@ export class AppController {
 
   @MessagePattern({ cmd: 'signup' })
   async signup(createUserDto) {
-    const result: User = await this.authService.signup(createUserDto);
+    const result = await this.authService.signup(createUserDto);
+    return result;
+  }
+
+  @MessagePattern({ cmd: 'signin' })
+  async signin(signinUserDto) {
+    const result = await this.authService.signin(signinUserDto);
+    return result;
+  }
+
+  @MessagePattern({ cmd: 'getUser' })
+  async getUser(userId) {
+    const result = await this.authService.getUser(userId);
+    return result;
+  }
+
+  @MessagePattern({ cmd: 'updateUserRole' })
+  async updateUserRole(updateUserRoleDto) {
+    const result = await this.authService.updateUserRole(updateUserRoleDto);
     return result;
   }
 

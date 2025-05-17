@@ -1,8 +1,12 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { UserModule } from './apis/user/user.module';
+
 import { ClientsModule } from './common/clients/clients.module';
+import { PassportModule } from '@nestjs/passport';
+import { JwtModule } from '@nestjs/jwt';
+import { JwtStrategy } from './common/strategies/jwt.strategy';
+import { AuthModule } from './apis/auth/auth.module';
 
 @Module({
   imports: [
@@ -10,9 +14,14 @@ import { ClientsModule } from './common/clients/clients.module';
     ClientsModule,
 
     // for importing modules
-    UserModule,
+    AuthModule,
+    PassportModule,
+    JwtModule.register({
+      secret: process.env.JWT_SECRET,
+      signOptions: { expiresIn: process.env.JWT_EXPIRES_IN },
+    }),
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, JwtStrategy],
 })
 export class AppModule {}

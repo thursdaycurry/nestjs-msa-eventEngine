@@ -13,6 +13,9 @@ services:
     build:
       context: ./apps/gateway
     container_name: gateway
+    environment:
+      - JWT_SECRET=maplestory
+      - JWT_EXPIRES_IN=60s
     ports:
       - "3000:3000"
     depends_on:
@@ -27,6 +30,8 @@ services:
     #   - "3001:3001"
     environment:
       - MONGODB_URI=mongodb://mongo:27017/auth
+      - JWT_SECRET=maplestory
+      - JWT_EXPIRES_IN=60s
     depends_on:
       - mongo
 

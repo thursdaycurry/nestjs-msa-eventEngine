@@ -44,7 +44,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="6VJmiSN2DV8pXNz3HxQ7" name="architecture-detail">
-    <mxGraphModel dx="1426" dy="859" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
+    <mxGraphModel dx="946" dy="679" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -54,7 +54,7 @@
         <mxCell id="BqQRJsZG2uqS7sq9pQgB-5" value="Client" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
           <mxGeometry x="30" y="300" width="30" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="BqQRJsZG2uqS7sq9pQgB-8" value="POST /user/signup" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="BqQRJsZG2uqS7sq9pQgB-8" value="POST /auth/signup" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="270" y="190" width="120" height="30" as="geometry" />
         </mxCell>
         <mxCell id="BqQRJsZG2uqS7sq9pQgB-11" value="Event Server" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
@@ -69,7 +69,7 @@
         <mxCell id="BqQRJsZG2uqS7sq9pQgB-13" value="Gateway Server" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="110" y="290" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="BqQRJsZG2uqS7sq9pQgB-14" value="POST /user/signin" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="BqQRJsZG2uqS7sq9pQgB-14" value="POST /auth/signin" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="270" y="230" width="120" height="30" as="geometry" />
         </mxCell>
         <mxCell id="BqQRJsZG2uqS7sq9pQgB-21" value="signin()" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
@@ -90,7 +90,7 @@
         <mxCell id="BqQRJsZG2uqS7sq9pQgB-31" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="BqQRJsZG2uqS7sq9pQgB-28" target="BqQRJsZG2uqS7sq9pQgB-25">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="BqQRJsZG2uqS7sq9pQgB-27" value="POST /users/:id/role" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="BqQRJsZG2uqS7sq9pQgB-27" value="POST /auth/:id/role" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="270" y="280" width="120" height="30" as="geometry" />
         </mxCell>
         <mxCell id="BqQRJsZG2uqS7sq9pQgB-33" value="get&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;UserRole()&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
@@ -99,7 +99,7 @@
         <mxCell id="BqQRJsZG2uqS7sq9pQgB-36" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="BqQRJsZG2uqS7sq9pQgB-37" target="BqQRJsZG2uqS7sq9pQgB-33">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="BqQRJsZG2uqS7sq9pQgB-34" value="GET /users/:id/role" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="BqQRJsZG2uqS7sq9pQgB-34" value="GET /auth/:id/role" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="270" y="320" width="120" height="30" as="geometry" />
         </mxCell>
         <mxCell id="BqQRJsZG2uqS7sq9pQgB-35" value="" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="BqQRJsZG2uqS7sq9pQgB-27" target="BqQRJsZG2uqS7sq9pQgB-28">

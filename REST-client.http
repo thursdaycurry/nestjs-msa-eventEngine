@@ -1,7 +1,59 @@
 # Gateway Service Endpoints
 
+### Health Check
+### @name health
+GET http://localhost:3000/health
+
+### Root Endpoint
 ### @name hello
 GET http://localhost:3000
 
-### @name health
-GET http://localhost:3000/health
+### Sign Up
+### @name signup
+POST http://localhost:3000/auth/signup
+Content-Type: application/json
+
+{
+    "email": "healer003@gmail.com",
+    "password": "healme777",
+    "name": "healman",
+    "loginType": "credentials"
+}
+
+### Sign In - Admin
+### @name signinAdmin
+POST http://localhost:3000/auth/signin
+Content-Type: application/json
+
+{
+    "email": "healer@gmail.com",
+    "password": "healme777",
+    "loginType": "credentials"
+}
+
+### Sign In - User
+### @name signinUser
+POST http://localhost:3000/auth/signin
+Content-Type: application/json
+
+{
+    "email": "healer003@gmail.com",
+    "password": "healme777",
+    "loginType": "credentials"
+}
+
+### Update User Role
+### @name updateUserRole
+POST http://localhost:3000/auth/user/role
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODI2MGY2MGE3NjhlOWM4Y2E4MzQxNDYiLCJuYW1lIjoiaGVhbG1hbiIsImVtYWlsIjoiaGVhbGVyQGdtYWlsLmNvbSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc0NzQ3MjU3NywiZXhwIjoxNzQ3NDcyNjM3fQ.pX4b647oCLkeWTs9TkfCYZp_fl-N-qsI1rwDuWoBtxE
+
+{
+    "userId": "68261f0863a0daf8f015363d",
+    "newRole": "USER"
+}
+
+### Get User by ID
+### @name getUserById
+GET http://localhost:3000/auth/user/68261f0863a0daf8f015363d
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODI2MGY2MGE3NjhlOWM4Y2E4MzQxNDYiLCJuYW1lIjoiaGVhbG1hbiIsImVtYWlsIjoiaGVhbGVyQGdtYWlsLmNvbSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc0NzQ3MjU3NywiZXhwIjoxNzQ3NDcyNjM3fQ.pX4b647oCLkeWTs9TkfCYZp_fl-N-qsI1rwDuWoBtxE
