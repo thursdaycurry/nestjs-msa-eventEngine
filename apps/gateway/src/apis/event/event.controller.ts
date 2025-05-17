@@ -14,11 +14,13 @@ export class EventController {
     return await this.eventService.createEvent(createEventDto);
   }
 
+  //TODO: add gards ROLES
   @Post('reward')
   async createReward(@Body() createRewardDto: CreateRewardDto) {
     return await this.eventService.createReward(createRewardDto);
   }
 
+  //TODO: add gards ROLES
   @Post('reward/item')
   async createRewardItem(@Body() createRewardItemDto: CreateRewardItemDto) {
     return await this.eventService.createRewardItem(createRewardItemDto);

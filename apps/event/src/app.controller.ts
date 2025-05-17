@@ -11,17 +11,17 @@ export class AppController {
     @InjectConnection() private readonly connection: Connection,
   ) {}
 
-  // @MessagePattern({ cmd: 'createEvent' })
-  // async createEvent(createEventDto) {
-  //   const result = await this.eventService.createEvent(createEventDto);
-  //   return result;
-  // }
+  @MessagePattern({ cmd: 'createEvent' })
+  async createEvent(createEventDto) {
+    const result = await this.eventService.createEvent(createEventDto);
+    return result;
+  }
 
-  // @MessagePattern({ cmd: 'createReward' })
-  // async createReward(createRewardDto) {
-  //   const result = await this.eventService.createReward(createRewardDto);
-  //   return result;
-  // }
+  @MessagePattern({ cmd: 'createReward' })
+  async createReward(createRewardDto) {
+    const result = await this.eventService.createReward(createRewardDto);
+    return result;
+  }
 
   //TODO: add role check
   @MessagePattern({ cmd: 'createRewardItem' })
