@@ -63,6 +63,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODI2MGY2M
 ### @name createRewardItem
 POST http://localhost:3000/event/reward/item
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODI4Njc3OGNiMTlhMTdlMTEzODI3YTEiLCJ1c2VySWQiOiI2ODI4Njc3OGNiMTlhMTdlMTEzODI3YTEiLCJuYW1lIjoiaGVhbG1hbiIsImVtYWlsIjoiaGVhbGVyQGdtYWlsLmNvbSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc0NzQ5NzkzMywiZXhwIjoxNzQ3NDk3OTkzfQ.ru9NqZL2tBbqsAgFC6Fhhzsh47ok30nPeAAdWHjw9L4
 
 {
     "item": "포인트",
@@ -73,11 +74,12 @@ Content-Type: application/json
 ### @name createReward
 POST http://localhost:3000/event/reward
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODI4Njc3OGNiMTlhMTdlMTEzODI3YTEiLCJ1c2VySWQiOiI2ODI4Njc3OGNiMTlhMTdlMTEzODI3YTEiLCJuYW1lIjoiaGVhbG1hbiIsImVtYWlsIjoiaGVhbGVyQGdtYWlsLmNvbSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc0NzQ5NzkzMywiZXhwIjoxNzQ3NDk3OTkzfQ.ru9NqZL2tBbqsAgFC6Fhhzsh47ok30nPeAAdWHjw9L4
 
 {
     "title": "포인트 100 보상",
     "description": "포인트 100을 주는 보상입니다.",
-    "rewardItemIds": ["6828a6cf82e1b14d0a7fc6b6"]
+    "rewardItemIds": ["6828b3d6dd87440f1d467540"]
 }
 
 
@@ -85,7 +87,7 @@ Content-Type: application/json
 ### @name createEvent
 POST http://localhost:3000/event
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODI4Njc3OGNiMTlhMTdlMTEzODI3YTEiLCJ1c2VySWQiOiI2ODI4Njc3OGNiMTlhMTdlMTEzODI3YTEiLCJuYW1lIjoiaGVhbG1hbiIsImVtYWlsIjoiaGVhbGVyQGdtYWlsLmNvbSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc0NzQ5Njc5MiwiZXhwIjoxNzQ3NDk2ODUyfQ.kkoQRZIH6duJ7mcxK7vw9gwWh3JSSvROy7Hd3iPqulQ
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODI4Njc3OGNiMTlhMTdlMTEzODI3YTEiLCJ1c2VySWQiOiI2ODI4Njc3OGNiMTlhMTdlMTEzODI3YTEiLCJuYW1lIjoiaGVhbG1hbiIsImVtYWlsIjoiaGVhbGVyQGdtYWlsLmNvbSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc0NzQ5NzkzMywiZXhwIjoxNzQ3NDk3OTkzfQ.ru9NqZL2tBbqsAgFC6Fhhzsh47ok30nPeAAdWHjw9L4
 
 {
     "title": "7로그인 700포인트 이벤트",
@@ -95,5 +97,16 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODI4Njc3O
     "goal": 7,
     "startDate": "2025-05-20",
     "endDate": "2025-06-15",
-    "rewardId": "6828a847736f5cdec605559a"
+    "rewardId": "6828b3dfdd87440f1d467542"
 }
+
+### Get Event List
+### @name getEventList
+GET http://localhost:3000/event
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODI4Njc3OGNiMTlhMTdlMTEzODI3YTEiLCJ1c2VySWQiOiI2ODI4Njc3OGNiMTlhMTdlMTEzODI3YTEiLCJuYW1lIjoiaGVhbG1hbiIsImVtYWlsIjoiaGVhbGVyQGdtYWlsLmNvbSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc0NzQ5NzkzMywiZXhwIjoxNzQ3NDk3OTkzfQ.ru9NqZL2tBbqsAgFC6Fhhzsh47ok30nPeAAdWHjw9L4
+
+### Get Event by ID
+### @name getEventById
+
+GET http://localhost:3000/event/6828b3ecdd87440f1d467544
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODI4Njc3OGNiMTlhMTdlMTEzODI3YTEiLCJ1c2VySWQiOiI2ODI4Njc3OGNiMTlhMTdlMTEzODI3YTEiLCJuYW1lIjoiaGVhbG1hbiIsImVtYWlsIjoiaGVhbGVyQGdtYWlsLmNvbSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc0NzQ5NzkzMywiZXhwIjoxNzQ3NDk3OTkzfQ.ru9NqZL2tBbqsAgFC6Fhhzsh47ok30nPeAAdWHjw9L4
