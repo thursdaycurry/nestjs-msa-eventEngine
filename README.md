@@ -140,3 +140,6 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
   }
 }
 ```
+
+
+역할 제어가 중요한 시스템이기 때문에 역할 제어를 분산시키지 않고 한 곳에 두어 검증 비용을 줄일 수 있다
