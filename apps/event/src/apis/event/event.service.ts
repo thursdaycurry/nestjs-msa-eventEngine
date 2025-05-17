@@ -26,10 +26,10 @@ export class EventService {
       description,
       startDate,
       endDate,
-      status,
       triggerType,
       goal,
       rewardId,
+      status,
     });
     return event;
   }
