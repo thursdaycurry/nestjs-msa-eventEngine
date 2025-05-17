@@ -85,6 +85,7 @@ Content-Type: application/json
 ### @name createEvent
 POST http://localhost:3000/event
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODI4Njc3OGNiMTlhMTdlMTEzODI3YTEiLCJ1c2VySWQiOiI2ODI4Njc3OGNiMTlhMTdlMTEzODI3YTEiLCJuYW1lIjoiaGVhbG1hbiIsImVtYWlsIjoiaGVhbGVyQGdtYWlsLmNvbSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc0NzQ5Njc5MiwiZXhwIjoxNzQ3NDk2ODUyfQ.kkoQRZIH6duJ7mcxK7vw9gwWh3JSSvROy7Hd3iPqulQ
 
 {
     "title": "7로그인 700포인트 이벤트",
@@ -92,7 +93,7 @@ Content-Type: application/json
     "category": "LOGIN",
     "triggerType": "STREAK",
     "goal": 7,
-    "startDate": "2025-05-10",
+    "startDate": "2025-05-20",
     "endDate": "2025-06-15",
     "rewardId": "6828a847736f5cdec605559a"
 }
