@@ -1,4 +1,4 @@
-import { Body, Controller, Post, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Post, Param, UseGuards } from '@nestjs/common';
 
 import { CreateUserDto } from './dto/create-user.dto';
 import { SigninUserDto } from './dto/signin-user.dto';
@@ -13,6 +13,7 @@ import { UserRole } from 'src/common/constants/constants';
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
+  // PUBLIC
   @Post('signup')
   async signup(@Body() createUserDto: CreateUserDto) {
     return await this.authService.signup(createUserDto);
@@ -23,17 +24,25 @@ export class AuthController {
     return await this.authService.signin(signinUserDto);
   }
 
+  // TEST
+  @UseGuards(JwtAuthGuard)
+  @Post('isJwtWork')
+  protected() {
+    return 'you have valid access token';
+  }
+
   // ADMIN
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles(UserRole.ADMIN)
-  @Post('user/role')
-  async updateRole(@Body() updateRoleDto: UpdateUserRoleDto) {
-    return await this.authService.updateUserRole(updateRoleDto);
+  @Get('user/:userId')
+  async getUser(@Param('userId') userId: string) {
+    return await this.authService.getUser(userId);
   }
 
-  @Post('isJwtWork')
-  @UseGuards(JwtAuthGuard)
-  protected() {
-    return 'you have valid access token';
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(UserRole.ADMIN)
+  @Post('user/role')
+  async updateUserRole(@Body() updateRoleDto: UpdateUserRoleDto) {
+    return await this.authService.updateUserRole(updateRoleDto);
   }
 }

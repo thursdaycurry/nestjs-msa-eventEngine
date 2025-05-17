@@ -94,6 +94,25 @@ export class AuthService {
     };
   }
 
+  async getUser(userId) {
+    const foundUser = await this.authRepository.findById(userId);
+    const isUserExist: boolean = !!foundUser;
+
+    if (!isUserExist) {
+      throw new NotFoundException('USER_NOT_FOUND');
+    }
+
+    const result = {
+      user: {
+        name: foundUser?.name,
+        email: foundUser?.email,
+        role: foundUser?.role,
+      },
+    };
+
+    return result;
+  }
+
   async updateUserRole(updateUserRoleDto) {
     const { userId, newRole } = updateUserRoleDto;
 

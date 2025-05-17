@@ -19,6 +19,11 @@ export class AuthService {
     return result;
   }
 
+  async getUser(userId: string) {
+    const result = await firstValueFrom(this.authClient.send({ cmd: 'getUser' }, userId));
+    return result;
+  }
+
   async updateUserRole(updateUserRoleDto: UpdateUserRoleDto) {
     const result = await firstValueFrom(
       this.authClient.send({ cmd: 'updateUserRole' }, updateUserRoleDto),
