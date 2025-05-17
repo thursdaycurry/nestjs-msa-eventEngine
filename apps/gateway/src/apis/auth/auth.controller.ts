@@ -5,6 +5,9 @@ import { SigninUserDto } from './dto/signin-user.dto';
 import { JwtAuthGuard } from 'src/common/guards/jwt-auth.guard';
 import { AuthService } from './auth.service';
 import { UpdateUserRoleDto } from './dto/update-user-role.dto';
+import { RolesGuard } from 'src/common/guards/roles.guard';
+import { Roles } from 'src/common/decorators/roles.decorator';
+import { UserRole } from 'src/common/constants/constants';
 
 @Controller('auth')
 export class AuthController {
@@ -20,6 +23,9 @@ export class AuthController {
     return await this.authService.signin(signinUserDto);
   }
 
+  // ADMIN
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(UserRole.ADMIN)
   @Post('user/role')
   async updateRole(@Body() updateRoleDto: UpdateUserRoleDto) {
     return await this.authService.updateUserRole(updateRoleDto);
