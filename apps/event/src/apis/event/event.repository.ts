@@ -84,6 +84,11 @@ export class EventRepository {
     return eventLog;
   }
 
+  async findAllEventLog(eventLogDto) {
+    const eventLog = await this.eventLogModel.find(eventLogDto).exec();
+    return eventLog;
+  }
+
   async findEventRewardClaimHistory(eventId: string, userId: string) {
     const userClaimData = await this.eventLogModel
       .find({

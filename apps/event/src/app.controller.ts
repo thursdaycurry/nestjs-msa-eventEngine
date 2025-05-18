@@ -37,6 +37,13 @@ export class AppController {
     return result;
   }
 
+  @MessagePattern({ cmd: 'searchEventRewardClaimHistory' })
+  async searchEventRewardClaimHistory(claimHistoryDto) {
+    const result =
+      await this.eventService.searchEventRewardClaimHistory(claimHistoryDto);
+    return result;
+  }
+
   @MessagePattern({ cmd: 'getEventList' })
   async getEventList() {
     const result = await this.eventService.getEventList();

@@ -98,6 +98,12 @@ export class EventService {
     return claimHistory;
   }
 
+  async searchEventRewardClaimHistory(claimHistoryDto) {
+    const claimHistory =
+      await this.eventRepository.findAllEventLog(claimHistoryDto);
+    return claimHistory;
+  }
+
   async getEventList() {
     const eventList = await this.eventRepository.getEventList();
     return eventList;
