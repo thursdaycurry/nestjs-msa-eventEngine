@@ -77,6 +77,7 @@ export class AuthService {
     // JWT
 
     const coreUserInfo = {
+      userId: foundUser?.id,
       name: foundUser?.name,
       email: foundUser?.email,
       role: foundUser?.role,

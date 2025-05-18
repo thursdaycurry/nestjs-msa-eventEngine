@@ -1,10 +1,3 @@
-export enum UserRole {
-  USER = 'USER',
-  OPERATOR = 'OPERATOR',
-  AUDITOR = 'AUDITOR',
-  ADMIN = 'ADMIN',
-}
-
 export enum EventCategory {
   LOGIN = 'LOGIN',
   FRIEND_INVITE = 'FRIEND_INVITE',

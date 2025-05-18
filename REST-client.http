@@ -14,7 +14,7 @@ POST http://localhost:3000/auth/signup
 Content-Type: application/json
 
 {
-    "email": "healer003@gmail.com",
+    "email": "healer@gmail.com",
     "password": "healme777",
     "name": "healman",
     "loginType": "credentials"
@@ -57,3 +57,76 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODI2MGY2M
 ### @name getUserById
 GET http://localhost:3000/auth/user/68261f0863a0daf8f015363d
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODI2MGY2MGE3NjhlOWM4Y2E4MzQxNDYiLCJuYW1lIjoiaGVhbG1hbiIsImVtYWlsIjoiaGVhbGVyQGdtYWlsLmNvbSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc0NzQ3MjU3NywiZXhwIjoxNzQ3NDcyNjM3fQ.pX4b647oCLkeWTs9TkfCYZp_fl-N-qsI1rwDuWoBtxE
+
+
+### Create Reward Item
+### @name createRewardItem
+POST http://localhost:3000/event/reward/item
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODI4Njc3OGNiMTlhMTdlMTEzODI3YTEiLCJ1c2VySWQiOiI2ODI4Njc3OGNiMTlhMTdlMTEzODI3YTEiLCJuYW1lIjoiaGVhbG1hbiIsImVtYWlsIjoiaGVhbGVyQGdtYWlsLmNvbSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc0NzQ5NzkzMywiZXhwIjoxNzQ3NDk3OTkzfQ.ru9NqZL2tBbqsAgFC6Fhhzsh47ok30nPeAAdWHjw9L4
+
+{
+    "item": "포인트",
+    "quantity": 100
+}
+
+### Create Reward
+### @name createReward
+POST http://localhost:3000/event/reward
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODI4Njc3OGNiMTlhMTdlMTEzODI3YTEiLCJ1c2VySWQiOiI2ODI4Njc3OGNiMTlhMTdlMTEzODI3YTEiLCJuYW1lIjoiaGVhbG1hbiIsImVtYWlsIjoiaGVhbGVyQGdtYWlsLmNvbSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc0NzQ5NzkzMywiZXhwIjoxNzQ3NDk3OTkzfQ.ru9NqZL2tBbqsAgFC6Fhhzsh47ok30nPeAAdWHjw9L4
+
+{
+    "title": "포인트 100 보상",
+    "description": "포인트 100을 주는 보상입니다.",
+    "rewardItemIds": ["6828b3d6dd87440f1d467540"]
+}
+
+
+### Create Event
+### @name createEvent
+POST http://localhost:3000/event
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODI4Njc3OGNiMTlhMTdlMTEzODI3YTEiLCJ1c2VySWQiOiI2ODI4Njc3OGNiMTlhMTdlMTEzODI3YTEiLCJuYW1lIjoiaGVhbG1hbiIsImVtYWlsIjoiaGVhbGVyQGdtYWlsLmNvbSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc0NzU1ODIzMSwiZXhwIjoxNzQ3NTU4MjkxfQ.f6sMdXw0tUwYEkSNSMPyueEgIynpwuHdM63KzZgYldE
+
+{
+    "title": "7로그인 700포인트 이벤트",
+    "description": "7일 연속 접속 시 700포인트를 보상으로 드리는 이벤트입니다.",
+    "category": "LOGIN",
+    "triggerType": "STREAK",
+    "goal": 7,
+    "startDate": "2025-05-10",
+    "endDate": "2025-06-15",
+    "rewardIds": ["6828a847736f5cdec605559a"]
+}
+
+### Add Reward To Event
+### @name addRewardToEvent
+POST http://localhost:3000/event/68299f62b34579086d71c45c/reward/6828b3dfdd87440f1d467542
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODI4Njc3OGNiMTlhMTdlMTEzODI3YTEiLCJ1c2VySWQiOiI2ODI4Njc3OGNiMTlhMTdlMTEzODI3YTEiLCJuYW1lIjoiaGVhbG1hbiIsImVtYWlsIjoiaGVhbGVyQGdtYWlsLmNvbSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc0NzU1ODIzMSwiZXhwIjoxNzQ3NTU4MjkxfQ.f6sMdXw0tUwYEkSNSMPyueEgIynpwuHdM63KzZgYldE
+
+
+### Get Event List
+### @name getEventList
+GET http://localhost:3000/event
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODI4Njc3OGNiMTlhMTdlMTEzODI3YTEiLCJ1c2VySWQiOiI2ODI4Njc3OGNiMTlhMTdlMTEzODI3YTEiLCJuYW1lIjoiaGVhbG1hbiIsImVtYWlsIjoiaGVhbGVyQGdtYWlsLmNvbSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc0NzQ5NzkzMywiZXhwIjoxNzQ3NDk3OTkzfQ.ru9NqZL2tBbqsAgFC6Fhhzsh47ok30nPeAAdWHjw9L4
+
+### Get Event by ID
+### @name getEventById
+
+GET http://localhost:3000/event/6828b3ecdd87440f1d467544
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODI4Njc3OGNiMTlhMTdlMTEzODI3YTEiLCJ1c2VySWQiOiI2ODI4Njc3OGNiMTlhMTdlMTEzODI3YTEiLCJuYW1lIjoiaGVhbG1hbiIsImVtYWlsIjoiaGVhbGVyQGdtYWlsLmNvbSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc0NzQ5NzkzMywiZXhwIjoxNzQ3NDk3OTkzfQ.ru9NqZL2tBbqsAgFC6Fhhzsh47ok30nPeAAdWHjw9L4t
+
+### Get Reward by ID
+### @name getRewardById
+
+GET http://localhost:3000/event/reward/6828a847736f5cdec605559a
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODI4Njc3OGNiMTlhMTdlMTEzODI3YTEiLCJ1c2VySWQiOiI2ODI4Njc3OGNiMTlhMTdlMTEzODI3YTEiLCJuYW1lIjoiaGVhbG1hbiIsImVtYWlsIjoiaGVhbGVyQGdtYWlsLmNvbSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc0NzU1MTUyOSwiZXhwIjoxNzQ3NTUxNTg5fQ.IRb66ckNLKeEXoYZNfAsBPrA4iFUF1fdhjxRBuibaNc
+
+
+### Add Reward Item To Reward
+### @name addRewardItemToReward
+
+POST http://localhost:3000/event/reward/6828a847736f5cdec605559a/item/68289ea9aed5409799e37f1c
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODI4Njc3OGNiMTlhMTdlMTEzODI3YTEiLCJ1c2VySWQiOiI2ODI4Njc3OGNiMTlhMTdlMTEzODI3YTEiLCJuYW1lIjoiaGVhbG1hbiIsImVtYWlsIjoiaGVhbGVyQGdtYWlsLmNvbSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc0NzU1ODcyNSwiZXhwIjoxNzQ3NTU4Nzg1fQ.LxgO4v1mAuNcFJSuYSdvc_uyvXT-mVtk1UyeYJmmoyo
