@@ -24,13 +24,6 @@ export class AuthController {
     return await this.authService.signin(signinUserDto);
   }
 
-  // TEST
-  @UseGuards(JwtAuthGuard)
-  @Post('isJwtWork')
-  protected() {
-    return 'you have valid access token';
-  }
-
   // ADMIN
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles(UserRole.ADMIN)
