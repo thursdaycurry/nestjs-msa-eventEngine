@@ -3,11 +3,11 @@
 
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+Project [Milkyway](https://github.com/thursdaycurry/milkyway)(은하수)는 유저 이벤트 및 보상 관리를 위한 서버 시스템입니다.
 
-## 체크리스트
+게임 세계에서 유저와 서버 간에 끊임없이 발생하는 다양한 이벤트를, 수많은 별들이 생겨나고 사라지는 은하수에 비유하여 이 이름을 붙였습니다.
 
-- 프로덕션에서 사용할 수 있는가?
+## Install
 
 ## System Architecture - abstract
 
@@ -17,7 +17,8 @@
 
 ## 시나리오
 
-- 현실 : 유저 대상 이벤트 시행 시 조건 확인, 조건 달성 여부, 보상 지급 등을 수작업으로 진행하고 있는 상황
+게임 운영에 필요한 유저 대상 이벤트 생성, 조건 달성 여부 확인, 조건에 따른 보상 지급 등을 수작업으로 진행하고 있는 상황
+
 - 이상 : 운영자는 이벤트 생성, 보상 등 관리에 집중하고, 보상은 유저가 직접 요청하도록 하여 자동화할 것
 
 ## 1. 요구사항
@@ -161,7 +162,6 @@ Auth Service: 사용자 인증 및 권한 관리
 Event Service: 이벤트 및 보상 관리
 
 아키텍처 다이어그램
-
 주요 기능
 
 1. 인증 및 권한 관리
@@ -177,43 +177,57 @@ Event Service: 이벤트 및 보상 관리
    보상 항목 생성 및 관리
    이벤트에 보상 연결
    사용자 보상 요청 처리
-   기술 스택
-   Backend
-   런타임: Node.js 18
-   프레임워크: NestJS (최신 버전)
-   데이터베이스: MongoDB
-   메시징: NestJS Microservices (TCP 전송)
-   인증: JWT (JSON Web Tokens)
-   이벤트 처리: EventEmitter
-   개발 도구
-   API 테스트: REST Client (HTTP 파일 기반)
-   문서화: Markdown
-   API 엔드포인트
-   인증 (Auth)
-   POST /auth/signup - 사용자 등록
-   POST /auth/signin - 로그인
-   POST /auth/user/role - 사용자 역할 업데이트 (ADMIN 전용)
-   GET /auth/user/:id - 사용자 정보 조회
-   이벤트 (Event)
-   POST /event - 새 이벤트 생성
-   GET /event - 이벤트 목록 조회
-   GET /event/:id - 특정 이벤트 조회
-   POST /event/reward - 새 보상 생성
-   POST /event/:eventId/claim-reward - 보상 요청
-   설치 및 실행
-   전제 조건
-   Node.js 18 이상
-   MongoDB 인스턴스
-   npm 또는 yarn
-   설정
-   저장소 클론:
-   bash
-   CopyInsert
-   git clone [repository-url]
-   cd nestjs-msa-userevent
-   의존성 설치:
-   bash
-   CopyInsert
+
+기술 스택
+Backend
+런타임: Node.js 18
+프레임워크: NestJS (최신 버전)
+데이터베이스: MongoDB
+메시징: NestJS Microservices (TCP 전송)
+인증: JWT (JSON Web Tokens)
+이벤트 처리: EventEmitter
+
+개발 도구
+API 테스트: REST Client (HTTP 파일 기반)
+문서화: Markdown
+
+API 엔드포인트
+인증 (Auth)
+POST /auth/signup - 사용자 등록
+POST /auth/signin - 로그인
+POST /auth/user/role - 사용자 역할 업데이트 (ADMIN 전용)
+GET /auth/user/:id - 사용자 정보 조회
+이벤트 (Event)
+POST /event - 새 이벤트 생성
+GET /event - 이벤트 목록 조회
+GET /event/:id - 특정 이벤트 조회
+POST /event/reward - 새 보상 생성
+POST /event/:eventId/claim-reward - 보상 요청
+
+## Tech stack
+
+- Runtime: Node.js 18
+- Framework: Nest.js
+- DB: MongoDB
+- Authentication: JWT
+- Deployment: Docker + Docker Compose
+- Language: TypeScript
+
+## Requirments
+
+설치 및 실행
+
+- Node.js 18 이상
+- MongoDB 인스턴스
+- npm 또는 yarn
+
+```
+git clone https://github.com/thursdaycurry/milkyway.git
+
+cd milkyway
+
+docker-compose up --build
+```
 
 # 루트 디렉토리에서
 
