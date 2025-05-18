@@ -17,10 +17,31 @@ export class AppController {
   @MessagePattern({ cmd: 'claimReward' })
   async claimReward({ eventId, userId }: { eventId: string; userId: string }) {
     const claimResult = await this.eventService.claimReward(eventId, userId);
-
     this.eventEmitter.emit(EVENT_EVENT_TYPE.CLAIM_REWARD, claimResult);
 
     return claimResult;
+  }
+
+  @MessagePattern({ cmd: 'getEventRewardClaimHistory' })
+  async getEventRewardClaimHistory({
+    eventId,
+    userId,
+  }: {
+    eventId: string;
+    userId: string;
+  }) {
+    const result = await this.eventService.getEventRewardClaimHistory(
+      eventId,
+      userId,
+    );
+    return result;
+  }
+
+  @MessagePattern({ cmd: 'searchEventRewardClaimHistory' })
+  async searchEventRewardClaimHistory(claimHistoryDto) {
+    const result =
+      await this.eventService.searchEventRewardClaimHistory(claimHistoryDto);
+    return result;
   }
 
   @MessagePattern({ cmd: 'getEventList' })

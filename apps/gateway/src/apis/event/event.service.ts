@@ -16,6 +16,20 @@ export class EventService {
     return result;
   }
 
+  async getEventRewardClaimHistory(eventId: string, userId: string) {
+    const result = await firstValueFrom(
+      this.eventClient.send({ cmd: 'getEventRewardClaimHistory' }, { eventId, userId }),
+    );
+    return result;
+  }
+
+  async searchEventRewardClaimHistory(claimHistoryDto) {
+    const result = await firstValueFrom(
+      this.eventClient.send({ cmd: 'searchEventRewardClaimHistory' }, claimHistoryDto),
+    );
+    return result;
+  }
+
   async getEventList() {
     const result = await firstValueFrom(this.eventClient.send({ cmd: 'getEventList' }, {}));
     return result;

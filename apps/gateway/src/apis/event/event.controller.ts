@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post, Request, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Query, Request, UseGuards } from '@nestjs/common';
 import { CreateEventDto } from './dto/create-event.dto';
 import { EventService } from './event.service';
 import { CreateRewardItemDto } from './dto/create-reward-item.dto';
@@ -12,6 +12,7 @@ import { Roles } from 'src/common/decorators/roles.decorator';
 export class EventController {
   constructor(private readonly eventService: EventService) {}
 
+  // USER
   @Post(':eventId/claim-reward')
   @UseGuards(JwtAuthGuard)
   async claimReward(@Param('eventId') eventId: string, @Request() req) {
@@ -19,6 +20,32 @@ export class EventController {
     return await this.eventService.claimReward(eventId, userId);
   }
 
+  @UseGuards(JwtAuthGuard)
+  @Get(':eventId/reward/claim-history')
+  async getEventRewardClaimHistory(@Param('eventId') eventId: string, @Request() req) {
+    const userId = req.user.userId;
+    return await this.eventService.getEventRewardClaimHistory(eventId, userId);
+  }
+
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(UserRole.ADMIN, UserRole.OPERATOR, UserRole.AUDITOR)
+  @Get('reward/claim-history')
+  async searchEventRewardClaimHistory(
+    @Query('eventType') eventType,
+    @Query('eventId') eventId,
+    @Query('finalClaimStatus') finalClaimStatus,
+    @Query('userId') userId,
+  ) {
+    const claimHistoryDto = {
+      eventType,
+      eventId,
+      userId,
+      finalClaimStatus,
+    };
+    return await this.eventService.searchEventRewardClaimHistory(claimHistoryDto);
+  }
+
+  // ADMIN, OPERATOR
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles(UserRole.ADMIN, UserRole.OPERATOR)
   @Get()
