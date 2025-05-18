@@ -9,6 +9,12 @@
 
 - 프로덕션에서 사용할 수 있는가?
 
+## System Architecture - abstract
+
+## System Architecture - details
+
+![architecture-details](./documents/imgs/architecture-details.png)
+
 ## 시나리오
 
 - 현실 : 유저 대상 이벤트 시행 시 조건 확인, 조건 달성 여부, 보상 지급 등을 수작업으로 진행하고 있는 상황
@@ -144,4 +150,110 @@ http://localhost:3000/api
 localhost:27017
 ```
 
+NestJS MSA User Event Management System
+Overview
+이 프로젝트는 NestJS 기반의 마이크로서비스 아키텍처를 활용한 사용자 이벤트 관리 시스템입니다. 사용자 인증, 권한 관리, 이벤트 생성 및 관리를 위한 종합적인 솔루션을 제공합니다.
 
+시스템 아키텍처
+개요
+Gateway Service: API 게이트웨이로 모든 외부 요청의 진입점 역할
+Auth Service: 사용자 인증 및 권한 관리
+Event Service: 이벤트 및 보상 관리
+
+아키텍처 다이어그램
+
+주요 기능
+
+1. 인증 및 권한 관리
+   JWT 기반 인증 시스템
+   역할 기반 접근 제어 (RBAC)
+   사용자 등록 및 로그인
+   사용자 역할 관리 (USER, OPERATOR, AUDITOR, ADMIN)
+2. 이벤트 관리
+   다양한 유형의 이벤트 생성 및 관리
+   이벤트 조건 설정 (예: 로그인 일수, 친구 초대 등)
+   이벤트 기간 및 상태 관리
+3. 보상 시스템
+   보상 항목 생성 및 관리
+   이벤트에 보상 연결
+   사용자 보상 요청 처리
+   기술 스택
+   Backend
+   런타임: Node.js 18
+   프레임워크: NestJS (최신 버전)
+   데이터베이스: MongoDB
+   메시징: NestJS Microservices (TCP 전송)
+   인증: JWT (JSON Web Tokens)
+   이벤트 처리: EventEmitter
+   개발 도구
+   API 테스트: REST Client (HTTP 파일 기반)
+   문서화: Markdown
+   API 엔드포인트
+   인증 (Auth)
+   POST /auth/signup - 사용자 등록
+   POST /auth/signin - 로그인
+   POST /auth/user/role - 사용자 역할 업데이트 (ADMIN 전용)
+   GET /auth/user/:id - 사용자 정보 조회
+   이벤트 (Event)
+   POST /event - 새 이벤트 생성
+   GET /event - 이벤트 목록 조회
+   GET /event/:id - 특정 이벤트 조회
+   POST /event/reward - 새 보상 생성
+   POST /event/:eventId/claim-reward - 보상 요청
+   설치 및 실행
+   전제 조건
+   Node.js 18 이상
+   MongoDB 인스턴스
+   npm 또는 yarn
+   설정
+   저장소 클론:
+   bash
+   CopyInsert
+   git clone [repository-url]
+   cd nestjs-msa-userevent
+   의존성 설치:
+   bash
+   CopyInsert
+
+# 루트 디렉토리에서
+
+npm install
+
+# 각 서비스별로 의존성 설치
+
+cd apps/auth && npm install
+cd ../event && npm install
+cd ../gateway && npm install
+환경 변수 설정:
+.env 파일을 생성하고 필요한 환경 변수를 설정하세요.
+필수 환경 변수:
+CopyInsert
+MONGODB_URI=mongodb://localhost:27017/user-event
+JWT_SECRET=your_jwt_secret
+JWT_EXPIRES_IN=1h
+실행
+bash
+CopyInsert
+
+# 개발 모드로 모든 서비스 실행
+
+npm run start:dev
+
+# 또는 각 서비스별로 실행
+
+# 게이트웨이
+
+cd apps/gateway && npm run start:dev
+
+# 인증 서비스
+
+cd apps/auth && npm run start:dev
+
+# 이벤트 서비스
+
+cd apps/event && npm run start:dev
+테스트
+프로젝트에는 REST Client를 사용한 API 테스트 파일이 포함되어 있습니다. REST-client.http 파일을 사용하여 다양한 엔드포인트를 테스트할 수 있습니다.
+
+라이센스
+이 프로젝트는 MIT 라이센스 하에 배포됩니다.
