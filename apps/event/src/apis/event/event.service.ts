@@ -90,6 +90,14 @@ export class EventService {
     return claimResult;
   }
 
+  async getEventRewardClaimHistory(eventId: string, userId: string) {
+    const claimHistory = await this.eventRepository.findEventRewardClaimHistory(
+      eventId,
+      userId,
+    );
+    return claimHistory;
+  }
+
   async getEventList() {
     const eventList = await this.eventRepository.getEventList();
     return eventList;

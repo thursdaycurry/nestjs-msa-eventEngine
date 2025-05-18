@@ -12,6 +12,7 @@ import { Roles } from 'src/common/decorators/roles.decorator';
 export class EventController {
   constructor(private readonly eventService: EventService) {}
 
+  // USER
   @Post(':eventId/claim-reward')
   @UseGuards(JwtAuthGuard)
   async claimReward(@Param('eventId') eventId: string, @Request() req) {
@@ -19,6 +20,14 @@ export class EventController {
     return await this.eventService.claimReward(eventId, userId);
   }
 
+  @UseGuards(JwtAuthGuard)
+  @Get(':eventId/reward/claim-history')
+  async getEventRewardClaimHistory(@Param('eventId') eventId: string, @Request() req) {
+    const userId = req.user.userId;
+    return await this.eventService.getEventRewardClaimHistory(eventId, userId);
+  }
+
+  // ADMIN, OPERATOR
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles(UserRole.ADMIN, UserRole.OPERATOR)
   @Get()
