@@ -4,30 +4,15 @@
 ### @name health
 GET http://localhost:3000/health
 
-### Root Endpoint
-### @name hello
-GET http://localhost:3000
-
 ### Sign Up
 ### @name signup
 POST http://localhost:3000/auth/signup
 Content-Type: application/json
 
 {
-    "email": "healer@gmail.com",
+    "email": "auditor@maplestory.com",
     "password": "healme777",
     "name": "healman",
-    "loginType": "credentials"
-}
-
-### Sign In - Admin
-### @name signinAdmin
-POST http://localhost:3000/auth/signin
-Content-Type: application/json
-
-{
-    "email": "healer@gmail.com",
-    "password": "healme777",
     "loginType": "credentials"
 }
 
@@ -42,6 +27,30 @@ Content-Type: application/json
     "loginType": "credentials"
 }
 
+### Sign In - AUDITOR
+### @name signinAuditor
+POST http://localhost:3000/auth/signin
+Content-Type: application/json
+
+{
+    "email": "auditor@maplestory.com",
+    "password": "healme777",
+    "loginType": "credentials"
+}
+
+### Sign In - Admin
+### @name signinAdmin
+POST http://localhost:3000/auth/signin
+Content-Type: application/json
+
+{
+    "email": "healer@gmail.com",
+    "password": "healme777",
+    "loginType": "credentials"
+}
+
+
+### ==============================================
 ### Update User Role
 ### @name updateUserRole
 POST http://localhost:3000/auth/user/role
@@ -139,13 +148,15 @@ POST http://localhost:3000/event/682992218a3bcf4ee3ff5b0d/claim-reward
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODI4Njc2Y2NiMTlhMTdlMTEzODI3OWUiLCJ1c2VySWQiOiI2ODI4Njc2Y2NiMTlhMTdlMTEzODI3OWUiLCJuYW1lIjoiaGVhbG1hbiIsImVtYWlsIjoiaGVhbGVyMDAzQGdtYWlsLmNvbSIsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzQ3NTc2NDAwLCJleHAiOjE3NDc1NzY0NjB9.08gq_sv6TJ4_4aQbjgPLvhkWYjJ0uFTYRa1SmUinrCA
 
-### Sign In - User
-### @name signinUser
-POST http://localhost:3000/auth/signin
+### getMyClaimHistory
+### @name getMyClaimHistory
+GET http://localhost:3000/event/68298ed2c17e7ce3149a5c45/reward/claim-history
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODI4Njc2Y2NiMTlhMTdlMTEzODI3OWUiLCJ1c2VySWQiOiI2ODI4Njc2Y2NiMTlhMTdlMTEzODI3OWUiLCJuYW1lIjoiaGVhbG1hbiIsImVtYWlsIjoiaGVhbGVyMDAzQGdtYWlsLmNvbSIsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzQ3NTc3ODMyLCJleHAiOjE3NDc1Nzc4OTJ9.-ch40M4T9ay4Umc0ccx3y9CJ3r6VA7T2rBuQvRA2VJU
 
-{
-    "email": "healer003@gmail.com",
-    "password": "healme777",
-    "loginType": "credentials"
-}
+
+### search Claim History
+### @name searchClaimHistory
+GET http://localhost:3000/event/reward/claim-history?userId=6828676ccb19a17e1138279e
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODI4Njc2Y2NiMTlhMTdlMTEzODI3OWUiLCJ1c2VySWQiOiI2ODI4Njc2Y2NiMTlhMTdlMTEzODI3OWUiLCJuYW1lIjoiaGVhbG1hbiIsImVtYWlsIjoiaGVhbGVyMDAzQGdtYWlsLmNvbSIsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzQ3NTc5MTczLCJleHAiOjE3NDc1NzkyMzN9.wI3JtdqT4mKANcvmTJ8KvfJbDqUNRzTlA7dBYCFiKzE
