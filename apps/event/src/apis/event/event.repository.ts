@@ -4,6 +4,8 @@ import { RewardItem } from './schemas/rewardItem.schema';
 import { Model } from 'mongoose';
 import { Reward } from './schemas/reward.schema';
 import { Event } from './schemas/event.schema';
+import { EventLog } from './schemas/eventLog.schema';
+import { EVENT_EVENT_TYPE } from 'src/common/constants/listener';
 
 @Injectable()
 export class EventRepository {
@@ -14,6 +16,8 @@ export class EventRepository {
     private readonly rewardModel: Model<Reward>,
     @InjectModel(RewardItem.name)
     private readonly rewardItemModel: Model<RewardItem>,
+    @InjectModel(EventLog.name)
+    private readonly eventLogModel: Model<EventLog>,
   ) {}
 
   async findEventById(eventId: string) {
@@ -68,5 +72,15 @@ export class EventRepository {
     });
 
     return await rewardItem.save();
+  }
+
+  async recordEventLog(eventLogDto) {
+    const eventLog = new this.eventLogModel(eventLogDto);
+    return await eventLog.save();
+  }
+
+  async findEventLog(eventLogDto) {
+    const eventLog = await this.eventLogModel.findOne(eventLogDto).exec();
+    return eventLog;
   }
 }
