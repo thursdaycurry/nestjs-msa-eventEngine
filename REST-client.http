@@ -87,7 +87,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODI4Njc3O
 ### @name createEvent
 POST http://localhost:3000/event
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODI4Njc3OGNiMTlhMTdlMTEzODI3YTEiLCJ1c2VySWQiOiI2ODI4Njc3OGNiMTlhMTdlMTEzODI3YTEiLCJuYW1lIjoiaGVhbG1hbiIsImVtYWlsIjoiaGVhbGVyQGdtYWlsLmNvbSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc0NzQ5NzkzMywiZXhwIjoxNzQ3NDk3OTkzfQ.ru9NqZL2tBbqsAgFC6Fhhzsh47ok30nPeAAdWHjw9L4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODI4Njc3OGNiMTlhMTdlMTEzODI3YTEiLCJ1c2VySWQiOiI2ODI4Njc3OGNiMTlhMTdlMTEzODI3YTEiLCJuYW1lIjoiaGVhbG1hbiIsImVtYWlsIjoiaGVhbGVyQGdtYWlsLmNvbSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc0NzU1ODIzMSwiZXhwIjoxNzQ3NTU4MjkxfQ.f6sMdXw0tUwYEkSNSMPyueEgIynpwuHdM63KzZgYldE
 
 {
     "title": "7로그인 700포인트 이벤트",
@@ -95,10 +95,17 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODI4Njc3O
     "category": "LOGIN",
     "triggerType": "STREAK",
     "goal": 7,
-    "startDate": "2025-05-20",
+    "startDate": "2025-05-10",
     "endDate": "2025-06-15",
-    "rewardId": "6828b3dfdd87440f1d467542"
+    "rewardIds": ["6828a847736f5cdec605559a"]
 }
+
+### Add Reward To Event
+### @name addRewardToEvent
+POST http://localhost:3000/event/68299f62b34579086d71c45c/reward/6828b3dfdd87440f1d467542
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODI4Njc3OGNiMTlhMTdlMTEzODI3YTEiLCJ1c2VySWQiOiI2ODI4Njc3OGNiMTlhMTdlMTEzODI3YTEiLCJuYW1lIjoiaGVhbG1hbiIsImVtYWlsIjoiaGVhbGVyQGdtYWlsLmNvbSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc0NzU1ODIzMSwiZXhwIjoxNzQ3NTU4MjkxfQ.f6sMdXw0tUwYEkSNSMPyueEgIynpwuHdM63KzZgYldE
+
 
 ### Get Event List
 ### @name getEventList
@@ -109,4 +116,10 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODI4Njc3O
 ### @name getEventById
 
 GET http://localhost:3000/event/6828b3ecdd87440f1d467544
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODI4Njc3OGNiMTlhMTdlMTEzODI3YTEiLCJ1c2VySWQiOiI2ODI4Njc3OGNiMTlhMTdlMTEzODI3YTEiLCJuYW1lIjoiaGVhbG1hbiIsImVtYWlsIjoiaGVhbGVyQGdtYWlsLmNvbSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc0NzQ5NzkzMywiZXhwIjoxNzQ3NDk3OTkzfQ.ru9NqZL2tBbqsAgFC6Fhhzsh47ok30nPeAAdWHjw9L4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODI4Njc3OGNiMTlhMTdlMTEzODI3YTEiLCJ1c2VySWQiOiI2ODI4Njc3OGNiMTlhMTdlMTEzODI3YTEiLCJuYW1lIjoiaGVhbG1hbiIsImVtYWlsIjoiaGVhbGVyQGdtYWlsLmNvbSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc0NzQ5NzkzMywiZXhwIjoxNzQ3NDk3OTkzfQ.ru9NqZL2tBbqsAgFC6Fhhzsh47ok30nPeAAdWHjw9L4t
+
+### Get Reward by ID
+### @name getRewardById
+
+GET http://localhost:3000/event/reward/6828a847736f5cdec605559a
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODI4Njc3OGNiMTlhMTdlMTEzODI3YTEiLCJ1c2VySWQiOiI2ODI4Njc3OGNiMTlhMTdlMTEzODI3YTEiLCJuYW1lIjoiaGVhbG1hbiIsImVtYWlsIjoiaGVhbGVyQGdtYWlsLmNvbSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc0NzU1MTUyOSwiZXhwIjoxNzQ3NTUxNTg5fQ.IRb66ckNLKeEXoYZNfAsBPrA4iFUF1fdhjxRBuibaNc
