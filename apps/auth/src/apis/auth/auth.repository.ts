@@ -38,7 +38,7 @@ export class AuthRepository {
     return this.userModel.findByIdAndUpdate(userId, { role: newRole });
   }
 
-  async recordAuthEvent(authEventDto) {
+  async recordAuthLog(authEventDto) {
     const createdAuthEvent = new this.authEventModel(authEventDto);
     return createdAuthEvent.save();
   }

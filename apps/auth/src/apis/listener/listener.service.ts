@@ -14,7 +14,7 @@ export class ListenerService {
       eventType: AUTH_EVENT_TYPE.USER_SIGNIN,
       userId: payload.userId,
     };
-    await this.authRepository.recordAuthEvent(authEventDto);
+    await this.authRepository.recordAuthLog(authEventDto);
 
     this.logger.log(`user signed in`, payload);
   }
