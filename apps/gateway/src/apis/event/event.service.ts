@@ -51,4 +51,11 @@ export class EventService {
     );
     return result;
   }
+
+  async addRewardItemToReward(rewardId: string, rewardItemId: string) {
+    const result = await firstValueFrom(
+      this.eventClient.send({ cmd: 'addRewardItemToReward' }, { rewardId, rewardItemId }),
+    );
+    return result;
+  }
 }

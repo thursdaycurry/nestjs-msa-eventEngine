@@ -53,11 +53,25 @@ export class AppController {
     return result;
   }
 
-  //TODO: add role check
   @MessagePattern({ cmd: 'createRewardItem' })
   async createRewardItem(createRewardItemDto) {
     const result =
       await this.eventService.createRewardItem(createRewardItemDto);
+    return result;
+  }
+
+  @MessagePattern({ cmd: 'addRewardItemToReward' })
+  async addRewardItemToReward({
+    rewardId,
+    rewardItemId,
+  }: {
+    rewardId: string;
+    rewardItemId: string;
+  }) {
+    const result = await this.eventService.addRewardItemToReward(
+      rewardId,
+      rewardItemId,
+    );
     return result;
   }
 

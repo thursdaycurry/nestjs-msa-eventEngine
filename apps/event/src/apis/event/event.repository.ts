@@ -16,7 +16,7 @@ export class EventRepository {
     private readonly rewardItemModel: Model<RewardItem>,
   ) {}
 
-  async findById(eventId: string) {
+  async findEventById(eventId: string) {
     const event = await this.eventModel.findById(eventId).exec();
     return event;
   }
@@ -48,7 +48,7 @@ export class EventRepository {
     return await event.save();
   }
 
-  async getReward(rewardId: string) {
+  async findRewardById(rewardId: string) {
     const reward = await this.rewardModel.findById(rewardId).exec();
     return reward;
   }
