@@ -1,4 +1,4 @@
-import { IsDateString, IsEnum, IsInt, IsString, Min } from 'class-validator';
+import { IsArray, IsDateString, IsEnum, IsInt, IsString, Min } from 'class-validator';
 import { EventCategory, EventTriggerType } from 'src/common/constants/constants';
 
 export class CreateEventDto {
@@ -24,6 +24,7 @@ export class CreateEventDto {
   @IsDateString()
   endDate: Date; // '2024-07-30'
 
-  @IsString()
-  rewardId: string; // 보상
+  @IsArray()
+  @IsString({ each: true })
+  rewardIds: string[]; // 보상
 }

@@ -5,7 +5,6 @@ import {
   EventStatusType,
   EventTriggerType,
 } from 'src/common/constants/event';
-import { Reward } from './reward.schema';
 import * as mongoose from 'mongoose';
 
 @Schema({ timestamps: true })
@@ -31,10 +30,17 @@ export class Event extends Document {
   @Prop({ type: Date, required: true })
   endDate: Date;
 
-  @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Reward', required: true })
-  rewardId: Reward;
+  @Prop({
+    type: [mongoose.Schema.Types.ObjectId],
+    ref: 'Reward',
+    required: true,
+  })
+  rewardIds: string[];
 
-  @Prop({ required: true })
+  @Prop({
+    enum: EventStatusType,
+    default: EventStatusType.OFF,
+  })
   status: EventStatusType;
 }
 

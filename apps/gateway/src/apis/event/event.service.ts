@@ -26,6 +26,13 @@ export class EventService {
     return result;
   }
 
+  async addRewardToEvent(eventId: string, rewardId: string) {
+    const result = await firstValueFrom(
+      this.eventClient.send({ cmd: 'addRewardToEvent' }, { eventId, rewardId }),
+    );
+    return result;
+  }
+
   async getReward(rewardId: string) {
     const result = await firstValueFrom(this.eventClient.send({ cmd: 'getReward' }, rewardId));
     return result;

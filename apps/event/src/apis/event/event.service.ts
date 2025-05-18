@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { EventRepository } from './event.repository';
 import { calcStatus } from 'src/common/util/helper';
+import { async } from 'rxjs';
 
 @Injectable()
 export class EventService {
@@ -25,7 +26,7 @@ export class EventService {
       endDate,
       triggerType,
       goal,
-      rewardId,
+      rewardIds,
     } = createEventDto;
 
     const status = calcStatus(startDate, endDate);
@@ -38,10 +39,28 @@ export class EventService {
       endDate,
       triggerType,
       goal,
-      rewardId,
+      rewardIds,
       status,
     });
     return event;
+  }
+
+  async addRewardToEvent(eventId: string, rewardId: string) {
+    const foundEvent = await this.eventRepository.findById(eventId);
+    if (!foundEvent) {
+      throw new Error('Event not found');
+    }
+
+    const isDuplicatedReward = foundEvent.rewardIds.includes(rewardId);
+    if (isDuplicatedReward) {
+      throw new Error('Event already has this reward');
+    }
+
+    foundEvent.rewardIds.push(rewardId);
+
+    const modifiedEvent = await foundEvent.save();
+
+    return modifiedEvent;
   }
 
   async getReward(rewardId: string) {

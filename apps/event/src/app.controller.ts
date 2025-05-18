@@ -29,6 +29,18 @@ export class AppController {
     return result;
   }
 
+  @MessagePattern({ cmd: 'addRewardToEvent' })
+  async addRewardToEvent({
+    eventId,
+    rewardId,
+  }: {
+    eventId: string;
+    rewardId: string;
+  }) {
+    const result = await this.eventService.addRewardToEvent(eventId, rewardId);
+    return result;
+  }
+
   @MessagePattern({ cmd: 'getReward' })
   async getReward(rewardId: string) {
     const result = await this.eventService.getReward(rewardId);
