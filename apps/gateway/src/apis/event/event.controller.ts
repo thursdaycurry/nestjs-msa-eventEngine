@@ -35,6 +35,13 @@ export class EventController {
 
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles(UserRole.ADMIN, UserRole.OPERATOR)
+  @Get('reward/:rewardId')
+  async getReward(@Param('rewardId') rewardId: string) {
+    return await this.eventService.getReward(rewardId);
+  }
+
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(UserRole.ADMIN, UserRole.OPERATOR)
   @Post('reward')
   async createReward(@Body() createRewardDto: CreateRewardDto) {
     return await this.eventService.createReward(createRewardDto);

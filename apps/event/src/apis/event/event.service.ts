@@ -44,6 +44,11 @@ export class EventService {
     return event;
   }
 
+  async getReward(rewardId: string) {
+    const reward = await this.eventRepository.getReward(rewardId);
+    return reward;
+  }
+
   async createReward(createRewardDto) {
     const { title, description, rewardItemIds } = createRewardDto;
 

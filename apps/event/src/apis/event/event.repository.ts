@@ -43,6 +43,11 @@ export class EventRepository {
     return await event.save();
   }
 
+  async getReward(rewardId: string) {
+    const reward = await this.rewardModel.findById(rewardId).exec();
+    return reward;
+  }
+
   async createReward(createRewardDto) {
     const reward = new this.rewardModel(createRewardDto);
 
