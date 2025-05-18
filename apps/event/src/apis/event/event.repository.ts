@@ -53,7 +53,6 @@ export class EventRepository {
 
   async createEvent(createEventDto) {
     const event = new this.eventModel(createEventDto);
-
     return await event.save();
   }
 

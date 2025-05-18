@@ -63,14 +63,6 @@ export class AppController {
     };
   }
 
-  @MessagePattern({ cmd: 'getUserLoginHistory' })
-  async getUserLoginHistory(getUserLoginHistoryDto) {
-    const result = await this.authService.getUserLoginHistory(
-      getUserLoginHistoryDto,
-    );
-    return result;
-  }
-
   @MessagePattern({ cmd: 'seedAuth' })
   async seedAuth() {
     const result = await this.authService.seedAuth();
