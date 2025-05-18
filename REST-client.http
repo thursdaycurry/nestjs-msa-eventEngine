@@ -130,3 +130,22 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODI4Njc3O
 
 POST http://localhost:3000/event/reward/6828a847736f5cdec605559a/item/68289ea9aed5409799e37f1c
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODI4Njc3OGNiMTlhMTdlMTEzODI3YTEiLCJ1c2VySWQiOiI2ODI4Njc3OGNiMTlhMTdlMTEzODI3YTEiLCJuYW1lIjoiaGVhbG1hbiIsImVtYWlsIjoiaGVhbGVyQGdtYWlsLmNvbSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc0NzU1ODcyNSwiZXhwIjoxNzQ3NTU4Nzg1fQ.LxgO4v1mAuNcFJSuYSdvc_uyvXT-mVtk1UyeYJmmoyo
+
+
+
+### Claim Reward
+### @name claimReward
+POST http://localhost:3000/event/682992218a3bcf4ee3ff5b0d/claim-reward
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODI4Njc2Y2NiMTlhMTdlMTEzODI3OWUiLCJ1c2VySWQiOiI2ODI4Njc2Y2NiMTlhMTdlMTEzODI3OWUiLCJuYW1lIjoiaGVhbG1hbiIsImVtYWlsIjoiaGVhbGVyMDAzQGdtYWlsLmNvbSIsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzQ3NTc2NDAwLCJleHAiOjE3NDc1NzY0NjB9.08gq_sv6TJ4_4aQbjgPLvhkWYjJ0uFTYRa1SmUinrCA
+
+### Sign In - User
+### @name signinUser
+POST http://localhost:3000/auth/signin
+Content-Type: application/json
+
+{
+    "email": "healer003@gmail.com",
+    "password": "healme777",
+    "loginType": "credentials"
+}

@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Request, UseGuards } from '@nestjs/common';
 import { CreateEventDto } from './dto/create-event.dto';
 import { EventService } from './event.service';
 import { CreateRewardItemDto } from './dto/create-reward-item.dto';
@@ -11,6 +11,13 @@ import { Roles } from 'src/common/decorators/roles.decorator';
 @Controller('event')
 export class EventController {
   constructor(private readonly eventService: EventService) {}
+
+  @Post(':eventId/claim-reward')
+  @UseGuards(JwtAuthGuard)
+  async claimReward(@Param('eventId') eventId: string, @Request() req) {
+    const userId = req.user.userId;
+    return await this.eventService.claimReward(eventId, userId);
+  }
 
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles(UserRole.ADMIN, UserRole.OPERATOR)

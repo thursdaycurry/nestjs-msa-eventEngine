@@ -156,4 +156,12 @@ export class AuthService {
   private async generateAccessToken(payload): Promise<string> {
     return this.jwtService.sign(payload);
   }
+
+  async getUserLoginHistory(getUserLoginHistoryDto) {
+    const userLoginHistory = await this.authRepository.getUserLoginHistory(
+      getUserLoginHistoryDto,
+    );
+
+    return userLoginHistory;
+  }
 }

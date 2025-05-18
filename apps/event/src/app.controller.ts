@@ -3,13 +3,25 @@ import { MessagePattern } from '@nestjs/microservices';
 import { Connection } from 'mongoose';
 import { InjectConnection } from '@nestjs/mongoose';
 import { EventService } from './apis/event/event.service';
+import { EVENT_EVENT_TYPE } from './common/constants/listener';
+import { EventEmitter2 } from '@nestjs/event-emitter';
 
 @Controller()
 export class AppController {
   constructor(
     private readonly eventService: EventService,
     @InjectConnection() private readonly connection: Connection,
+    private readonly eventEmitter: EventEmitter2,
   ) {}
+
+  @MessagePattern({ cmd: 'claimReward' })
+  async claimReward({ eventId, userId }: { eventId: string; userId: string }) {
+    const claimResult = await this.eventService.claimReward(eventId, userId);
+
+    this.eventEmitter.emit(EVENT_EVENT_TYPE.CLAIM_REWARD, claimResult);
+
+    return claimResult;
+  }
 
   @MessagePattern({ cmd: 'getEventList' })
   async getEventList() {

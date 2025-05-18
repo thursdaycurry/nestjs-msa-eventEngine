@@ -64,4 +64,12 @@ export class AppController {
       dbStatus,
     };
   }
+
+  @MessagePattern({ cmd: 'getUserLoginHistory' })
+  async getUserLoginHistory(getUserLoginHistoryDto) {
+    const result = await this.authService.getUserLoginHistory(
+      getUserLoginHistoryDto,
+    );
+    return result;
+  }
 }
