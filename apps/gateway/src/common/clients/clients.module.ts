@@ -1,4 +1,3 @@
-// apps/gateway/src/apis/clients/clients.module.ts
 import { Module } from '@nestjs/common';
 import { ClientsModule as NestClientsModule, Transport } from '@nestjs/microservices';
 

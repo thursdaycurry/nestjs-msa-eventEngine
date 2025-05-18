@@ -1,0 +1,3 @@
+export enum EVENT_EVENT_TYPE {
+  CLAIM_REWARD = 'USER.CLAIM_REWARD',
+}

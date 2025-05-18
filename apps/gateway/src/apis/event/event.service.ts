@@ -9,6 +9,13 @@ import { CreateRewardDto } from './dto/create-reward.dto';
 export class EventService {
   constructor(@Inject('EVENT_SERVICE') private eventClient: ClientProxy) {}
 
+  async claimReward(eventId: string, userId: string) {
+    const result = await firstValueFrom(
+      this.eventClient.send({ cmd: 'claimReward' }, { eventId, userId }),
+    );
+    return result;
+  }
+
   async getEventList() {
     const result = await firstValueFrom(this.eventClient.send({ cmd: 'getEventList' }, {}));
     return result;

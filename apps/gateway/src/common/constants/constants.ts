@@ -1,3 +1,4 @@
+// user
 export enum UserRole {
   USER = 'USER',
   OPERATOR = 'OPERATOR',
@@ -5,10 +6,11 @@ export enum UserRole {
   ADMIN = 'ADMIN',
 }
 
+// event
 export enum EventCategory {
   LOGIN = 'LOGIN',
-  FRIEND_INVITE = 'FRIEND_INVITE',
-  PURCHASE = 'PURCHASE',
+  // FRIEND_INVITE = 'FRIEND_INVITE',
+  // PURCHASE = 'PURCHASE',
 }
 
 export enum EventStatusType {
@@ -19,5 +21,5 @@ export enum EventStatusType {
 export enum EventTriggerType {
   SINGLE = 'SINGLE',
   STREAK = 'STREAK',
-  COUNT = 'COUNT',
+  // COUNT = 'COUNT',
 }
