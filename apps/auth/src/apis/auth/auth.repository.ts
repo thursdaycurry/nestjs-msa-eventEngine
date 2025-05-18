@@ -3,6 +3,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { User } from './schemas/user.schema';
 import { AuthEvent } from './schemas/authevent.schema';
+import { AUTH_EVENT_TYPE } from 'src/common/constants/listener';
 
 @Injectable()
 export class AuthRepository {
@@ -40,5 +41,20 @@ export class AuthRepository {
   async recordAuthEvent(authEventDto) {
     const createdAuthEvent = new this.authEventModel(authEventDto);
     return createdAuthEvent.save();
+  }
+
+  async getUserLoginHistory(getUserLoginHistoryDto) {
+    const { userId, startDate, endDate } = getUserLoginHistoryDto;
+
+    const userLoginHistory = await this.authEventModel.find({
+      userId,
+      eventType: AUTH_EVENT_TYPE.USER_SIGNIN,
+      createdAt: {
+        $gte: startDate,
+        $lte: endDate,
+      },
+    });
+
+    return userLoginHistory;
   }
 }
