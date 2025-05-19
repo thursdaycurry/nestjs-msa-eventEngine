@@ -26,8 +26,6 @@ services:
     build:
       context: ./apps/auth
     container_name: auth
-    # ports:
-    #   - "3001:3001"
     environment:
       - MONGODB_URI=mongodb://mongo:27017/auth
       - JWT_SECRET=maplestory
@@ -39,8 +37,6 @@ services:
     build:
       context: ./apps/event
     container_name: event
-    # ports:
-    #   - "3002:3002"
     environment:
       - MONGODB_URI=mongodb://mongo:27017/event
     depends_on:

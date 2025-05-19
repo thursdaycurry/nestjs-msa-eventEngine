@@ -1,9 +1,16 @@
+## TODO
+
+- [ ] refresh token
+- [ ]
+
+paris 요청 백엔드 레이턴시 줄이려고, 백엔드 multi region 두고 프론트엔드는 서울에만 뒀는데. 캐싱 동기화 문제. next.js는 ssr 적용해서, next.js 서버가 클라이언트가 되서 레디스 관련 토큰은 paris가 아닌 아시아에 저장되는 것이 문제. 해결하려면 프론트를 각 리전별로 두거나, 레디스 클러스터링 sync해서 해결할 수 있음.
+
 [circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
 [circleci-url]: https://circleci.com/gh/nestjs/nest
 
 ## Description
 
-Project [Milkyway](https://github.com/thursdaycurry/milkyway)(은하수)는 유저 이벤트 및 보상 관리를 위한 서버 시스템입니다.
+Project [Milkyway](https://github.com/thursdaycurry/nestjs-msa-milkyway)(은하수)는 유저 이벤트 및 보상 관리를 위한 서버 시스템입니다.
 
 게임 세계에서 유저와 서버 간에 끊임없이 발생하는 다양한 이벤트를, 수많은 별들이 생겨나고 사라지는 은하수에 비유하여 이 이름을 붙였습니다.
 
@@ -15,11 +22,40 @@ Project [Milkyway](https://github.com/thursdaycurry/milkyway)(은하수)는 유�
 
 ![architecture-details](./documents/imgs/architecture-details.png)
 
-## 시나리오
+## 주요 기능
 
-게임 운영에 필요한 유저 대상 이벤트 생성, 조건 달성 여부 확인, 조건에 따른 보상 지급 등을 수작업으로 진행하고 있는 상황
+게임 운영에 필요한 이벤트 및 보상 관리 작업들을 자동화하기 위한 api들을 제공합니다.
 
-- 이상 : 운영자는 이벤트 생성, 보상 등 관리에 집중하고, 보상은 유저가 직접 요청하도록 하여 자동화할 것
+인증 및 권한 관리
+
+- JWT 기반 인증 시스템
+- 유저 등록 및 로그인
+- 역할 기반 접근 제어 (RBAC)
+- 사용자 역할 관리(USER, OPERATOR, AUDITOR, ADMIN)
+
+이벤트 관리
+
+- 다양한 유형의 이벤트 생성 및 관리
+- 이벤트 조건 설정 (예: 특정 기간동안 로그인 일수 충족 조건등)
+  이벤트 기간 및 상태 관리
+
+3. 보상 시스템
+   보상 항목 생성 및 관리
+   이벤트에 보상 연결
+   사용자 보상 요청 처리
+
+기술 스택
+Backend
+런타임: Node.js 18
+프레임워크: NestJS (최신 버전)
+데이터베이스: MongoDB
+메시징: NestJS Microservices (TCP 전송)
+인증: JWT (JSON Web Tokens)
+이벤트 처리: EventEmitter
+
+개발 도구
+API 테스트: REST Client (HTTP 파일 기반)
+문서화: Markdown
 
 ## 1. 요구사항
 
@@ -183,36 +219,6 @@ Gateway Service: API 게이트웨이로 모든 외부 요청의 진입점 역할
 Auth Service: 사용자 인증 및 권한 관리
 Event Service: 이벤트 및 보상 관리
 
-아키텍처 다이어그램
-주요 기능
-
-1. 인증 및 권한 관리
-   JWT 기반 인증 시스템
-   역할 기반 접근 제어 (RBAC)
-   사용자 등록 및 로그인
-   사용자 역할 관리 (USER, OPERATOR, AUDITOR, ADMIN)
-2. 이벤트 관리
-   다양한 유형의 이벤트 생성 및 관리
-   이벤트 조건 설정 (예: 로그인 일수, 친구 초대 등)
-   이벤트 기간 및 상태 관리
-3. 보상 시스템
-   보상 항목 생성 및 관리
-   이벤트에 보상 연결
-   사용자 보상 요청 처리
-
-기술 스택
-Backend
-런타임: Node.js 18
-프레임워크: NestJS (최신 버전)
-데이터베이스: MongoDB
-메시징: NestJS Microservices (TCP 전송)
-인증: JWT (JSON Web Tokens)
-이벤트 처리: EventEmitter
-
-개발 도구
-API 테스트: REST Client (HTTP 파일 기반)
-문서화: Markdown
-
 API 엔드포인트
 인증 (Auth)
 POST /auth/signup - 사용자 등록
@@ -244,12 +250,20 @@ POST /event/:eventId/claim-reward - 보상 요청
 - npm 또는 yarn
 
 ```
-git clone https://github.com/thursdaycurry/milkyway.git
+git clone https://github.com/thursdaycurry/nestjs-msa-milkyway.git
 
 cd milkyway
 
 docker-compose up --build
 ```
+
+## port
+
+기본 localhost:3000
+
+api
+- localhost:3000/auth/a...
+
 
 # 루트 디렉토리에서
 
