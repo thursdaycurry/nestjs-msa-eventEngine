@@ -43,6 +43,14 @@ export class AppController {
     return result;
   }
 
+  @MessagePattern({ cmd: 'getUserLoginHistory' })
+  async getUserLoginHistory(getUserLoginHistoryDto) {
+    const result = await this.authService.getUserLoginHistory(
+      getUserLoginHistoryDto,
+    );
+    return result;
+  }
+
   @MessagePattern({ cmd: 'health' })
   healthCheck() {
     const mongoStatus = this.connection.readyState;

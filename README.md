@@ -240,8 +240,8 @@ docker-compose up --build
 기본 localhost:3000
 
 api
-- localhost:3000/auth/a...
 
+- localhost:3000/auth/a...
 
 # 루트 디렉토리에서
 
