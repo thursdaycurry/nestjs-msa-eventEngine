@@ -11,8 +11,8 @@ async function bootstrap() {
 
   // swagger
   const config = new DocumentBuilder()
-    .setTitle('Event and Auth API')
-    .setDescription('Event and Auth API description')
+    .setTitle('Milkyway API playground')
+    .setDescription('Gateway, Auth, Event 서버들에 대한 API들을 테스트할 수 있습니다.')
     .setVersion('1.0')
     .addBearerAuth(
       {
