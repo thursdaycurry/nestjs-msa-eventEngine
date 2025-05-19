@@ -1,6 +1,6 @@
 <mxfile host="Electron" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/27.0.5 Chrome/134.0.6998.205 Electron/35.3.0 Safari/537.36" version="27.0.5" pages="6">
   <diagram id="6VJmiSN2DV8pXNz3HxQ7" name="architecture-detail">
-    <mxGraphModel dx="1693" dy="970" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="461" dy="1105" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -587,7 +587,7 @@
     </mxGraphModel>
   </diagram>
   <diagram name="architecture" id="fcX4fqq7h0XcPOJs6E93">
-    <mxGraphModel dx="1185" dy="1529" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
+    <mxGraphModel dx="330" dy="1640" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -628,8 +628,8 @@
         <mxCell id="ottDS6Fv6NhPnlriElBD-4" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="ottDS6Fv6NhPnlriElBD-5" target="ottDS6Fv6NhPnlriElBD-8">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="ottDS6Fv6NhPnlriElBD-5" value="Auth&amp;nbsp;&lt;div&gt;server&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="500" y="-200" width="120" height="60" as="geometry" />
+        <mxCell id="ottDS6Fv6NhPnlriElBD-5" value="Auth&amp;nbsp;&lt;div&gt;server&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="483" y="-721" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="ottDS6Fv6NhPnlriElBD-6" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="ottDS6Fv6NhPnlriElBD-8" target="ottDS6Fv6NhPnlriElBD-5">
           <mxGeometry relative="1" as="geometry" />
@@ -639,10 +639,10 @@
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="ottDS6Fv6NhPnlriElBD-8" value="Event&amp;nbsp;&lt;div&gt;server&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="640" y="50" width="120" height="60" as="geometry" />
+        <mxCell id="ottDS6Fv6NhPnlriElBD-8" value="Event&lt;div&gt;server&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="483" y="-565" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="ottDS6Fv6NhPnlriElBD-9" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="ottDS6Fv6NhPnlriElBD-13" target="ottDS6Fv6NhPnlriElBD-5">
+        <mxCell id="ottDS6Fv6NhPnlriElBD-9" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="ottDS6Fv6NhPnlriElBD-13" target="ottDS6Fv6NhPnlriElBD-5">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="ottDS6Fv6NhPnlriElBD-10" value="TCP" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="ottDS6Fv6NhPnlriElBD-9">
@@ -658,8 +658,11 @@
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="ottDS6Fv6NhPnlriElBD-13" value="Gateway&lt;div&gt;server&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="290" y="-130" width="120" height="60" as="geometry" />
+        <mxCell id="r2oHodOELzbvGVTFQw68-24" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="ottDS6Fv6NhPnlriElBD-13" target="r2oHodOELzbvGVTFQw68-18">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ottDS6Fv6NhPnlriElBD-13" value="Gateway&lt;div&gt;server&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="203" y="-643" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="r2oHodOELzbvGVTFQw68-1" value="auth 관련된 것들" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
           <mxGeometry x="85" y="338" width="110" height="30" as="geometry" />
@@ -670,22 +673,14 @@
         <mxCell id="r2oHodOELzbvGVTFQw68-3" value="Auth&amp;nbsp;&lt;div&gt;server&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="640" y="370" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="r2oHodOELzbvGVTFQw68-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.25;exitY=0;exitDx=0;exitDy=0;curved=1;" edge="1" parent="1" source="r2oHodOELzbvGVTFQw68-4" target="r2oHodOELzbvGVTFQw68-3">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
         <mxCell id="r2oHodOELzbvGVTFQw68-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.75;exitDx=0;exitDy=0;entryX=1;entryY=0.75;entryDx=0;entryDy=0;curved=1;" edge="1" parent="1" source="r2oHodOELzbvGVTFQw68-4" target="r2oHodOELzbvGVTFQw68-7">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="r2oHodOELzbvGVTFQw68-4" value="Event&amp;nbsp;&lt;div&gt;server&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="640" y="500" width="120" height="60" as="geometry" />
+          <mxGeometry x="640" y="460" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="r2oHodOELzbvGVTFQw68-5" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="r2oHodOELzbvGVTFQw68-7" target="r2oHodOELzbvGVTFQw68-4">
           <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="r2oHodOELzbvGVTFQw68-6" value="TCP" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="r2oHodOELzbvGVTFQw68-5">
-          <mxGeometry x="-0.0444" y="-1" relative="1" as="geometry">
-            <mxPoint as="offset" />
-          </mxGeometry>
         </mxCell>
         <mxCell id="r2oHodOELzbvGVTFQw68-7" value="Gateway&lt;div&gt;server&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="330" y="440" width="120" height="60" as="geometry" />
@@ -707,11 +702,25 @@
         <mxCell id="r2oHodOELzbvGVTFQw68-13" value="보상 요청" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
           <mxGeometry x="125" y="538" width="70" height="30" as="geometry" />
         </mxCell>
+        <mxCell id="r2oHodOELzbvGVTFQw68-19" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="r2oHodOELzbvGVTFQw68-18" target="ottDS6Fv6NhPnlriElBD-13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r2oHodOELzbvGVTFQw68-20" value="HTTP" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontStyle=1" vertex="1" connectable="0" parent="r2oHodOELzbvGVTFQw68-19">
+          <mxGeometry x="-0.0476" y="2" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="r2oHodOELzbvGVTFQw68-18" value="USER" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="93" y="-643" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="r2oHodOELzbvGVTFQw68-23" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;&lt;br&gt;&lt;/h1&gt;&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.&lt;/p&gt;" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="823" y="-393" width="180" height="120" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
   <diagram id="8b-MJXN457PTxkRw0Qc4" name="erd">
-    <mxGraphModel dx="1261" dy="905" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
+    <mxGraphModel dx="1425" dy="829" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -823,7 +832,7 @@
         <mxCell id="NM6ktvTFHllRgesOjWK6-57" value="rewardItems[]" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="NM6ktvTFHllRgesOjWK6-53" vertex="1">
           <mxGeometry y="90" width="90" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="NM6ktvTFHllRgesOjWK6-59" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="NM6ktvTFHllRgesOjWK6-34" edge="1" target="NM6ktvTFHllRgesOjWK6-54">
+        <mxCell id="NM6ktvTFHllRgesOjWK6-59" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="NM6ktvTFHllRgesOjWK6-34" target="NM6ktvTFHllRgesOjWK6-54" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="380" y="1265" as="targetPoint" />
           </mxGeometry>
@@ -834,7 +843,7 @@
         <mxCell id="NM6ktvTFHllRgesOjWK6-64" value="category(LOGIN)을 STREAK 7하면 리워드를 준다.&lt;div&gt;리워드는 item들의 수만큼의 RewardItem이 포함된다&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
           <mxGeometry x="70" y="1223" width="280" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="2eyVD4FEjbjtgV5sOYdU-1" value="보상은 하나이고, 보상" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+        <mxCell id="2eyVD4FEjbjtgV5sOYdU-1" value="보상은 하나이고, 보상" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
           <mxGeometry x="385" y="1338" width="130" height="30" as="geometry" />
         </mxCell>
       </root>
@@ -1097,7 +1106,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="ufJrrAPQhl4ea0keXgva" name="Page-6">
-    <mxGraphModel grid="1" page="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
+    <mxGraphModel dx="346" dy="829" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
