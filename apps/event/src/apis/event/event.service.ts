@@ -255,4 +255,9 @@ export class EventService {
 
     return isTriggerSatisfied;
   }
+
+  async seedEvent() {
+    const result = await this.eventRepository.seedEvent();
+    return result;
+  }
 }

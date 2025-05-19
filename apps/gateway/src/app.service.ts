@@ -28,4 +28,20 @@ export class AppService {
       throw new InternalServerErrorException(`Health check failed: ${error.message}`);
     }
   }
+
+  async seed() {
+    try {
+      const [authSeed, eventSeed] = await Promise.all([
+        firstValueFrom(this.authClient.send({ cmd: 'seedAuth' }, {})),
+        firstValueFrom(this.eventClient.send({ cmd: 'seedEvent' }, {})),
+      ]);
+
+      return {
+        auth: authSeed,
+        event: eventSeed,
+      };
+    } catch (error) {
+      throw new InternalServerErrorException(`Seed failed: ${error.message}`);
+    }
+  }
 }

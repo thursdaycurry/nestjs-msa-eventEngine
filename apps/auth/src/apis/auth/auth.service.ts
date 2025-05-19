@@ -6,8 +6,8 @@ import {
   NotFoundException,
 } from '@nestjs/common';
 import { User } from './schemas/user.schema';
-import * as bcrypt from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
+import { comparePassword, hashPassword } from 'src/common/util/helper';
 
 @Injectable()
 export class AuthService {
@@ -17,7 +17,7 @@ export class AuthService {
   ) {}
 
   async signup(createUserDto) {
-    const { email, password, name, loginType } = createUserDto;
+    const { email, password, name, loginType, role } = createUserDto;
 
     const foundUser = await this.authRepository.findByEmail(email);
     const isUserExist = !!foundUser;
@@ -26,17 +26,19 @@ export class AuthService {
       throw new ConflictException('User already exists');
     }
 
-    const hashedPassword = await this.hashPassword(password);
+    const hashedPassword = await hashPassword(password);
 
     const createUser = await this.authRepository.createUser({
       email,
       password: hashedPassword,
       name,
       loginType,
+      role,
     });
 
     const result = {
       user: {
+        userId: createUser.id,
         email: createUser.email,
         name: createUser.name,
         role: createUser.role,
@@ -53,7 +55,7 @@ export class AuthService {
 
     // User validation
     const isUserExist: boolean = !!foundUser;
-    const isPasswordMatched: boolean = await this.comparePassword(
+    const isPasswordMatched: boolean = await comparePassword(
       password as string,
       foundUser?.password as string,
     );
@@ -141,20 +143,8 @@ export class AuthService {
     return result;
   }
 
-  private async hashPassword(password: string): Promise<string> {
-    const salt = 10;
-    return await bcrypt.hash(password, salt);
-  }
-
-  private async comparePassword(
-    password: string,
-    hashedPassword: string,
-  ): Promise<boolean> {
-    return await bcrypt.compare(password, hashedPassword);
-  }
-
   private async generateAccessToken(payload): Promise<string> {
-    return this.jwtService.sign(payload);
+    return await this.jwtService.sign(payload);
   }
 
   async getUserLoginHistory(getUserLoginHistoryDto) {
@@ -163,5 +153,10 @@ export class AuthService {
     );
 
     return userLoginHistory;
+  }
+
+  async seedAuth() {
+    const result = await this.authRepository.seedAuth();
+    return result;
   }
 }

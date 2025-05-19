@@ -1,11 +1,16 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { RewardItem } from './schemas/rewardItem.schema';
-import { Model } from 'mongoose';
+import mongoose, { Model } from 'mongoose';
 import { Reward } from './schemas/reward.schema';
 import { Event } from './schemas/event.schema';
 import { EventLog } from './schemas/eventLog.schema';
 import { EVENT_EVENT_TYPE } from 'src/common/constants/listener';
+import {
+  EventCategory,
+  EventStatusType,
+  EventTriggerType,
+} from 'src/common/constants/event';
 
 @Injectable()
 export class EventRepository {
@@ -34,7 +39,7 @@ export class EventRepository {
     const eventDetail = await this.eventModel
       .findById(eventId)
       .populate({
-        path: 'rewardId',
+        path: 'rewardIds',
         populate: {
           path: 'rewardItemIds',
           populate: {
@@ -98,5 +103,92 @@ export class EventRepository {
       })
       .exec();
     return userClaimData;
+  }
+
+  async seedEvent() {
+    const idRewardItem1 = new mongoose.Types.ObjectId(
+      '665a9f7eea43b80cbdf2e125',
+    );
+    const idRewardItem2 = new mongoose.Types.ObjectId(
+      '665a9f7eea43b80cbdf2e126',
+    );
+
+    const rewardItems = [
+      {
+        _id: idRewardItem1,
+        item: '포인트',
+        quantity: 100,
+      },
+      {
+        _id: idRewardItem2,
+        item: '부채',
+        quantity: 7,
+      },
+    ];
+
+    const createdRewardItems =
+      await this.rewardItemModel.insertMany(rewardItems);
+
+    const idReward1 = new mongoose.Types.ObjectId('665a9f7eea43b80cbdf2e127');
+    const idReward2 = new mongoose.Types.ObjectId('665a9f7eea43b80cbdf2e128');
+
+    const rewards = [
+      {
+        _id: idReward1,
+        title: '포인트 100 보상',
+        description: '달성 시 포인트 100점을 보상으로 제공하는 보상입니다.',
+        rewardItemIds: [idRewardItem1],
+      },
+      {
+        _id: idReward2,
+        title: '추모의 국화꽃 보상',
+        description: '달성 시 국화꽃 7개를 보상으로 제공하는 보상입니다.',
+        rewardItemIds: [idRewardItem2],
+      },
+    ];
+
+    const createdRewards = await this.rewardModel.insertMany(rewards);
+
+    const idEvent1 = new mongoose.Types.ObjectId('665a9f7eea43b80cbdf2e129');
+    const idEvent2 = new mongoose.Types.ObjectId('665a9f7eea43b80cbdf2e130');
+
+    const events = [
+      {
+        _id: idEvent1,
+        title: '생애 첫 7일 연속 로그인 달성 이벤트',
+        description:
+          '생애 첫 7일 연속 로그인을 달성하면 포인트 100점을 보상으로 제공하는 이벤트입니다.',
+        category: EventCategory.LOGIN,
+        status: EventStatusType.ON,
+        triggerType: EventTriggerType.STREAK,
+        goal: 7,
+        startDate: new Date('2025-05-10T00:00:00.000Z'),
+        endDate: new Date('2025-05-30T23:59:59.999Z'),
+        rewardIds: [idReward1],
+      },
+      {
+        _id: idEvent2,
+        title: '현충일 이벤트',
+        description:
+          '나라를 위해 희생한 영웅들을 위해 개최하는 이벤트. 이날 로그인 하면 부채 7개를 보상으로 드립니다.',
+        category: EventCategory.LOGIN,
+        status: EventStatusType.OFF,
+        triggerType: EventTriggerType.SINGLE,
+        goal: 1,
+        startDate: new Date('2025-06-06T00:00:00.000Z'),
+        endDate: new Date('2025-06-06T23:59:59.999Z'),
+        rewardIds: [idReward2],
+      },
+    ];
+
+    const createdEvents = await this.eventModel.insertMany(events);
+
+    const result = {
+      createdRewardItems,
+      createdRewards,
+      createdEvents,
+    };
+
+    return result;
   }
 }

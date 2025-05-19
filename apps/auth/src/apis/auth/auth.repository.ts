@@ -1,9 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
+import mongoose, { Model } from 'mongoose';
 import { User } from './schemas/user.schema';
 import { AuthEvent } from './schemas/authevent.schema';
 import { AUTH_EVENT_TYPE } from 'src/common/constants/listener';
+import { hashPassword } from 'src/common/util/helper';
 
 @Injectable()
 export class AuthRepository {
@@ -22,13 +23,14 @@ export class AuthRepository {
   }
 
   async createUser(createUserDto): Promise<User> {
-    const { email, password, name, loginType } = createUserDto;
+    const { email, password, name, loginType, role } = createUserDto;
 
     const createdUser = new this.userModel({
       email,
       password,
       name,
       loginType,
+      role,
     });
 
     return createdUser.save();
@@ -56,5 +58,180 @@ export class AuthRepository {
     });
 
     return userLoginHistory;
+  }
+
+  // for test
+  async seedAuth() {
+    const idUser = new mongoose.Types.ObjectId('665a9f7eea43b80cbdf2e111');
+    const idOperator = new mongoose.Types.ObjectId('665a9f7eea43b80cbdf2e112');
+    const idAuditor = new mongoose.Types.ObjectId('665a9f7eea43b80cbdf2e113');
+    const idAdmin = new mongoose.Types.ObjectId('665a9f7eea43b80cbdf2e114');
+
+    const idAuthEvent1 = new mongoose.Types.ObjectId(
+      '665a9f7eea43b80cbdf2e115',
+    );
+    const idAuthEvent2 = new mongoose.Types.ObjectId(
+      '665a9f7eea43b80cbdf2e116',
+    );
+    const idAuthEvent3 = new mongoose.Types.ObjectId(
+      '665a9f7eea43b80cbdf2e117',
+    );
+    const idAuthEvent4 = new mongoose.Types.ObjectId(
+      '665a9f7eea43b80cbdf2e118',
+    );
+    const idAuthEvent5 = new mongoose.Types.ObjectId(
+      '665a9f7eea43b80cbdf2e119',
+    );
+    const idAuthEvent6 = new mongoose.Types.ObjectId(
+      '665a9f7eea43b80cbdf2e120',
+    );
+    const idAuthEvent7 = new mongoose.Types.ObjectId(
+      '665a9f7eea43b80cbdf2e121',
+    );
+    const idAuthEvent8 = new mongoose.Types.ObjectId(
+      '665a9f7eea43b80cbdf2e122',
+    );
+    const idAuthEvent9 = new mongoose.Types.ObjectId(
+      '665a9f7eea43b80cbdf2e123',
+    );
+    const idAuthEvent10 = new mongoose.Types.ObjectId(
+      '665a9f7eea43b80cbdf2e124',
+    );
+
+    const hashedPassword = await hashPassword('mypassword');
+
+    const users = [
+      {
+        _id: idUser,
+        email: 'user@milkyway.com',
+        name: 'john',
+        password: hashedPassword,
+        loginType: 'credentials',
+        role: 'USER',
+      },
+      {
+        _id: idOperator,
+        email: 'operator@milkyway.com',
+        name: 'susan',
+        password: hashedPassword,
+        loginType: 'credentials',
+        role: 'OPERATOR',
+      },
+      {
+        _id: idAuditor,
+        email: 'auditor@milkyway.com',
+        name: 'roy',
+        password: hashedPassword,
+        loginType: 'credentials',
+        role: 'AUDITOR',
+      },
+      {
+        _id: idAdmin,
+        email: 'admin@milkyway.com',
+        name: 'dio',
+        password: hashedPassword,
+        loginType: 'credentials',
+        role: 'ADMIN',
+      },
+    ];
+
+    const createdUsers = await this.userModel.insertMany(users);
+
+    const result_users = [
+      {
+        _id: idUser,
+        email: 'user@milkyway.com',
+        name: 'john',
+        password: 'mypassword',
+        loginType: 'credentials',
+        role: 'USER',
+      },
+      {
+        _id: idOperator,
+        email: 'operator@milkyway.com',
+        name: 'susan',
+        password: 'mypassword',
+        loginType: 'credentials',
+        role: 'OPERATOR',
+      },
+      {
+        _id: idAuditor,
+        email: 'auditor@milkyway.com',
+        name: 'roy',
+        password: 'mypassword',
+        loginType: 'credentials',
+        role: 'AUDITOR',
+      },
+      {
+        _id: idAdmin,
+        email: 'admin@milkyway.com',
+        name: 'dio',
+        password: 'mypassword',
+        loginType: 'credentials',
+        role: 'ADMIN',
+      },
+    ];
+
+    const resultAuthEvents = [
+      {
+        userId: idUser,
+        eventType: AUTH_EVENT_TYPE.USER_SIGNIN,
+        createdAt: new Date('2025-05-10T12:00:00.000Z'),
+      },
+      {
+        userId: idUser,
+        eventType: AUTH_EVENT_TYPE.USER_SIGNIN,
+        createdAt: new Date('2025-05-11T12:00:00.000Z'),
+      },
+      {
+        userId: idUser,
+        eventType: AUTH_EVENT_TYPE.USER_SIGNIN,
+        createdAt: new Date('2025-05-12T12:00:00.000Z'),
+      },
+      {
+        userId: idUser,
+        eventType: AUTH_EVENT_TYPE.USER_SIGNIN,
+        createdAt: new Date('2025-05-13T12:00:00.000Z'),
+      },
+      {
+        userId: idUser,
+        eventType: AUTH_EVENT_TYPE.USER_SIGNIN,
+        createdAt: new Date('2025-05-14T12:00:00.000Z'),
+      },
+      {
+        userId: idUser,
+        eventType: AUTH_EVENT_TYPE.USER_SIGNIN,
+        createdAt: new Date('2025-05-15T12:00:00.000Z'),
+      },
+      {
+        userId: idUser,
+        eventType: AUTH_EVENT_TYPE.USER_SIGNIN,
+        createdAt: new Date('2025-05-16T12:00:00.000Z'),
+      },
+      {
+        userId: idUser,
+        eventType: AUTH_EVENT_TYPE.USER_SIGNIN,
+        createdAt: new Date('2025-05-17T12:00:00.000Z'),
+      },
+      {
+        userId: idUser,
+        eventType: AUTH_EVENT_TYPE.USER_SIGNIN,
+        createdAt: new Date('2025-05-18T12:00:00.000Z'),
+      },
+      {
+        userId: idUser,
+        eventType: AUTH_EVENT_TYPE.USER_SIGNIN,
+        createdAt: new Date('2025-05-19T12:00:00.000Z'),
+      },
+    ];
+
+    const result_authEvents =
+      await this.authEventModel.insertMany(resultAuthEvents);
+
+    const result = {
+      createdUsers: result_users,
+      createdAuthEvents: result_authEvents,
+    };
+    return result;
   }
 }

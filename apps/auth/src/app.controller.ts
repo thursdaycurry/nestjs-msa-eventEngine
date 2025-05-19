@@ -1,5 +1,4 @@
 import { Controller } from '@nestjs/common';
-import { AppService } from './app.service';
 import { MessagePattern } from '@nestjs/microservices';
 import { InjectConnection } from '@nestjs/mongoose';
 import { Connection } from 'mongoose';
@@ -10,7 +9,6 @@ import { AUTH_EVENT_TYPE } from './common/constants/listener';
 @Controller()
 export class AppController {
   constructor(
-    private readonly appService: AppService,
     @InjectConnection() private readonly connection: Connection,
     private readonly authService: AuthService,
     private readonly eventEmitter: EventEmitter2,
@@ -70,6 +68,12 @@ export class AppController {
     const result = await this.authService.getUserLoginHistory(
       getUserLoginHistoryDto,
     );
+    return result;
+  }
+
+  @MessagePattern({ cmd: 'seedAuth' })
+  async seedAuth() {
+    const result = await this.authService.seedAuth();
     return result;
   }
 }
