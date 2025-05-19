@@ -127,4 +127,12 @@ export class AppController {
       dbStatus,
     };
   }
+
+  @MessagePattern({ cmd: 'seedEvent' })
+  async seedEvent() {
+    const result = await this.eventService.seedEvent();
+    return result;
+  }
+
+  
 }
