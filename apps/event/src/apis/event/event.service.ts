@@ -33,6 +33,21 @@ export class EventService {
         throw new NotAcceptableException('Event not found');
       }
 
+      // in case event is off
+      if (findEvent?.status === EventStatusType.OFF) {
+        throw new NotAcceptableException('Event is deactivated');
+      }
+
+      // in case out of event period
+      const isTodayInEventPeriod = isTodayBetween(
+        findEvent?.startDate,
+        findEvent?.endDate,
+      );
+
+      if (!isTodayInEventPeriod) {
+        throw new NotAcceptableException('Event is not in progress');
+      }
+
       // in case reward already given
       const previousRewardLog = await this.eventRepository.findEventLog({
         eventType: EVENT_EVENT_TYPE.CLAIM_REWARD,
@@ -40,6 +55,7 @@ export class EventService {
         userId,
         finalClaimStatus: ClaimStatus.SUCCESS,
       });
+
       const isRewardAlreadyGiven = !!previousRewardLog;
       if (isRewardAlreadyGiven) {
         throw new NotAcceptableException('Reward already given');
@@ -54,23 +70,9 @@ export class EventService {
         endDate: findEvent.endDate,
         userId,
       });
+
       if (!isTriggerSatisfied) {
         throw new NotAcceptableException('Event trigger is not satisfied');
-      }
-
-      // in case event is off
-      if (findEvent?.status === EventStatusType.OFF) {
-        throw new NotAcceptableException('Event is deactivated');
-      }
-
-      // in case out of event period
-      const isTodayInEventPeriod = isTodayBetween(
-        findEvent?.startDate,
-        findEvent?.endDate,
-      );
-
-      if (!isTodayInEventPeriod) {
-        throw new NotAcceptableException('Event is not in progress');
       }
 
       finalClaimStatus = ClaimStatus.SUCCESS;
@@ -249,8 +251,12 @@ export class EventService {
           isTriggerSatisfied = userLoginCount >= goal;
         }
 
-      default:
         break;
+
+      default:
+        throw new NotAcceptableException(
+          `Unsupported event category: ${category}`,
+        );
     }
 
     return isTriggerSatisfied;
