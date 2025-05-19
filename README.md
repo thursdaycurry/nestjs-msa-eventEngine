@@ -68,42 +68,6 @@ ERD
 
 ## Project setup
 
-```bash
-$ npm install
-```
-
-## Compile and run the project
-
-```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
-```
-
-## Run tests
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
-
-## Deployment
-
-## License
-
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
-
 ## Thought
 
 dto validation은 어디서 해야하나
@@ -163,6 +127,21 @@ Auth 서버에서는
 
 로그인과 로그인 정보 저장은 별도의 이벤트다. 따라서 signin api에서는 로그인 정보 저장 로직을 디커플링 시켜야 하며 이를 위해 event emitter를 사용할 것이다.
 
-
 이벤트 유형
 다양한 유형의 이벤트를 여러개 등록하고 싶은데 표준화를 어떻게 해야하지?
+
+## test
+
+테스트 방법
+
+```
+# Swagger api
+http://localhost:3000/api
+```
+
+```
+# MongoDB
+localhost:27017
+```
+
+

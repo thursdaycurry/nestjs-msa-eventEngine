@@ -5,7 +5,7 @@
 GET http://localhost:3000/health
 
 ### Sign Up
-### @name signup
+### @name signupUser
 POST http://localhost:3000/auth/signup
 Content-Type: application/json
 
@@ -55,7 +55,7 @@ Content-Type: application/json
 ### @name updateUserRole
 POST http://localhost:3000/auth/user/role
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODI2MGY2MGE3NjhlOWM4Y2E4MzQxNDYiLCJuYW1lIjoiaGVhbG1hbiIsImVtYWlsIjoiaGVhbGVyQGdtYWlsLmNvbSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc0NzQ3MjU3NywiZXhwIjoxNzQ3NDcyNjM3fQ.pX4b647oCLkeWTs9TkfCYZp_fl-N-qsI1rwDuWoBtxE
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODJiMTgzY2U0YTZhOWExOWRlZjhiMDkiLCJ1c2VySWQiOiI2ODJiMTgzY2U0YTZhOWExOWRlZjhiMDkiLCJuYW1lIjoiam9obiIsImVtYWlsIjoidGVzdC1hZG1pbkBleGFtcGxlLmNvbSIsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzQ3NjU3NTkwLCJleHAiOjE3NDc2NTgxOTB9.Ju9G_Qf6-5dGEvMekDqHK6q7aqdB-nCTlFF3Pv6rEwQ
 
 {
     "userId": "68261f0863a0daf8f015363d",
