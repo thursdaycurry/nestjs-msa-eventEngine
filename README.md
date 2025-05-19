@@ -123,8 +123,7 @@ Project [Milkyway](https://github.com/thursdaycurry/nestjs-msa-milkyway)(은하�
 
 테스트 도구
 
-- Swagger
-  문서화: Markdown
+- Swagger API
 
 ## Getting Started
 
