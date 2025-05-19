@@ -2,10 +2,10 @@ import { ApiProperty } from '@nestjs/swagger';
 import { IsEmail, IsNotEmpty } from 'class-validator';
 import { UserRole } from 'src/common/constants/constants';
 
-export class CreateUserDto {
+export class CreateAdminDto {
   @ApiProperty({
-    example: 'user2@milkyway.com',
-    description: 'User email',
+    example: 'admin2@milkyway.com',
+    description: 'admin user email',
   })
   @IsEmail()
   @IsNotEmpty()
@@ -19,8 +19,8 @@ export class CreateUserDto {
   password: string;
 
   @ApiProperty({
-    example: 'another john',
-    description: 'just user name',
+    example: 'another susan',
+    description: 'just admin name',
   })
   @IsNotEmpty()
   name: string;
@@ -33,9 +33,9 @@ export class CreateUserDto {
   loginType: string;
 
   @ApiProperty({
-    example: 'USER',
+    example: 'ADMIN',
     description: 'User role',
   })
   @IsNotEmpty()
-  role: string = UserRole.USER;
+  role: string = UserRole.ADMIN;
 }

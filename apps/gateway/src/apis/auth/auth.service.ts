@@ -11,6 +11,7 @@ export class AuthService {
 
   async signup(createUserDto: CreateUserDto) {
     const result = await firstValueFrom(this.authClient.send({ cmd: 'signup' }, createUserDto));
+
     return result;
   }
 
