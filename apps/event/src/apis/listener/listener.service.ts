@@ -15,8 +15,6 @@ export class ListenerService {
     finalClaimStatus: string;
     message: string;
   }) {
-    this.logger.log(`claim reward`, payload);
-
     const eventLogDto = {
       eventType: EVENT_EVENT_TYPE.CLAIM_REWARD,
       ...payload,

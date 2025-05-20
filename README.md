@@ -51,6 +51,7 @@
   - [Endpoint](#endpoint)
   - [Test](#test)
 - [Thoughts](#thoughts)
+
   - [이벤트 설계 의도](#이벤트-설계-의도)
   - [이벤트 보상 충족 검사 로직에 대한 생각](#이벤트-보상-충족-검사-로직에-대한-생각)
   - [3 Layered Architecture 구조](#3-layered-architecture-구조)
@@ -59,7 +60,7 @@
   - [User 엔티티 구성에 대한 고민](#user-엔티티-구성에-대한-고민)
   - [조건 검증 방식](#조건-검증-방식)
   - [통합 로깅 시스템에 대한 고민](#통합-로깅-시스템에-대한-고민)
-  - [Access Token만 개발한 이유](#access-token만-개발한-이유)
+
 - [Contact](#contact)
 - [Acknowledgments](#acknowledgments)
 
@@ -162,15 +163,15 @@ Project [Milkyway](https://github.com/thursdaycurry/nestjs-msa-milkyway)(은하�
 
 ### endpoint
 
-- Swagger: `http://localhost:3000/api`
 - Gateway API: `http://localhost:3000`
 - MongoDB: `mongodb://localhost:27017`
+- Swagger API: `http://localhost:3000/api`
 
 ### Test
 
-테스트 방법은 3가지 있습니다.
+테스트 방법은 2가지 있습니다.
 
-#### 1. Swagger 테스트(추천)
+#### 1. Swagger API 테스트(추천)
 
 ```sh
 http://localhost:3000/api
@@ -179,6 +180,8 @@ http://localhost:3000/api
 #### 2. REST Client 테스트
 
 ```sh
+# REST Client Extension이 설치되어 있어야 합니다.
+# VS Marketplace Link: https://marketplace.windsurf.com/vscode/item?itemName=humao.rest-client
 $ project-directory/REST-client.http
 ```
 
@@ -247,10 +250,6 @@ JWT 토큰 검증 및 역할 검사는 passport 라이브러리와 guard를 활�
 ### 통합 로깅 시스템에 대한 고민
 
 유저 로그인 시도 기록은 auth 서버의 DB에, 그리고 보상 요청 기록은 event 서버의 DB에 각각 적재하고 있습니다. 하지만 이 로그성 데이터들은 기하급수적으로 쌓일 가능성이 있으므로 일반적인 DB에 적재하는 것이 부담이 될 수도 있습니다. 개선할 수 있다면 통합 로그 서버를 만들어서 MSA의 로그들을 통합적으로 관리하는 방식도 좋을 것 같습니다. 그렇게 되면 ELK 스택을 활용하여 애널리틱스 서비스도 개발할 수 있습니다. 또 다른 대안으로 데이터 유통기한(TTL)을 두어 자동 삭제하거나 저렴한 스토리지에 옮겨두는 방식도 좋을 것 같습니다.
-
-### access token만 개발한 이유
-
-refresh 토큰은 access 토큰과 함께 유저에게 반환됩니다. 단, access 토큰은 stateless하지만 refresh 토큰은 서버에서 직접 보관합니다. 이는 언제라도 refresh 토큰을 무효화하여 서버가 세션에 대한 통제권을 가지기 위함입니다. 하지만 이벤트 및 보상 요청은 유저 입장에서 요청하지 않고 또 어드민 접근 또한 세션을 길게 둘 경우 사회 공학적 차원에서 보안 취약점(이직한 동료가 다음날 어드민 사이트에 로그인해버림)이 있습니다. 따라서 서버는 클라이언트 간 세션을 길게 유지할 필요가 없기 때문에 refresh 토큰은 사용하지 않고 access 토큰의 수명을 조금 길게 가져가는 방법이 좋다고 생각했습니다.
 
 ## Contact
 

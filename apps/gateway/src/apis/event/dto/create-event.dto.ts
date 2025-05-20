@@ -4,25 +4,25 @@ import { ApiProperty } from '@nestjs/swagger';
 
 export class CreateEventDto {
   @ApiProperty({
-    example: '일주일 쭈욱 포인트 팡팡',
+    example: '생애 첫 7일 연속 로그인 달성 이벤트',
     description: 'Event title',
   })
   @IsString()
-  title: string; // '7일 연속 로그인 이벤트'
+  title: string;
 
   @ApiProperty({
-    example: '7일 연속 로그인 시 보상하는 이벤트입니다',
+    example: '생애 첫 7일 연속 로그인을 달성하면 포인트 100점을 보상으로 제공하는 이벤트입니다.',
     description: 'Event description',
   })
   @IsString()
-  description: string; // '7일 연속 로그인 시 보상'
+  description: string;
 
   @ApiProperty({
     example: 'LOGIN',
     description: 'Event category',
   })
   @IsEnum(EventCategory)
-  category: EventCategory; // 'LOGIN', 'FRIEND_INVITE', 'PURCHASE'
+  category: EventCategory;
 
   @ApiProperty({
     example: 'STREAK',
@@ -37,21 +37,21 @@ export class CreateEventDto {
   })
   @IsInt()
   @Min(1)
-  goal: number; // 7일
+  goal: number;
 
   @ApiProperty({
     example: '2024-06-01',
     description: 'Event start date',
   })
   @IsDateString()
-  startDate: Date; // '2024-06-01'
+  startDate: Date;
 
   @ApiProperty({
     example: '2024-07-30',
     description: 'Event end date',
   })
   @IsDateString()
-  endDate: Date; // '2024-07-30'
+  endDate: Date;
 
   @ApiProperty({
     example: ['665a9f7eea43b80cbdf2e127'],
@@ -59,5 +59,5 @@ export class CreateEventDto {
   })
   @IsArray()
   @IsString({ each: true })
-  rewardIds: string[]; // 보상
+  rewardIds: string[];
 }

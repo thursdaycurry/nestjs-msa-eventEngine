@@ -78,11 +78,6 @@ export class EventRepository {
     return await rewardItem.save();
   }
 
-  async recordEventLog(eventLogDto) {
-    const eventLog = new this.eventLogModel(eventLogDto);
-    return await eventLog.save();
-  }
-
   async findEventLog(eventLogDto) {
     const eventLog = await this.eventLogModel.findOne(eventLogDto).exec();
     return eventLog;
@@ -91,6 +86,11 @@ export class EventRepository {
   async findAllEventLog(eventLogDto) {
     const eventLog = await this.eventLogModel.find(eventLogDto).exec();
     return eventLog;
+  }
+
+  async recordEventLog(eventLogDto) {
+    const eventLog = new this.eventLogModel(eventLogDto);
+    return await eventLog.save();
   }
 
   async findEventRewardClaimHistory(eventId: string, userId: string) {
@@ -104,13 +104,20 @@ export class EventRepository {
     return userClaimData;
   }
 
+  // for testing
   async seedEvent() {
+    // test data
     const idRewardItem1 = new mongoose.Types.ObjectId(
       '665a9f7eea43b80cbdf2e125',
     );
     const idRewardItem2 = new mongoose.Types.ObjectId(
       '665a9f7eea43b80cbdf2e126',
     );
+    const idReward1 = new mongoose.Types.ObjectId('665a9f7eea43b80cbdf2e127');
+    const idReward2 = new mongoose.Types.ObjectId('665a9f7eea43b80cbdf2e128');
+
+    const idEvent1 = new mongoose.Types.ObjectId('665a9f7eea43b80cbdf2e129');
+    const idEvent2 = new mongoose.Types.ObjectId('665a9f7eea43b80cbdf2e130');
 
     const rewardItems = [
       {
@@ -120,16 +127,10 @@ export class EventRepository {
       },
       {
         _id: idRewardItem2,
-        item: '부채',
+        item: '국화꽃',
         quantity: 7,
       },
     ];
-
-    const createdRewardItems =
-      await this.rewardItemModel.insertMany(rewardItems);
-
-    const idReward1 = new mongoose.Types.ObjectId('665a9f7eea43b80cbdf2e127');
-    const idReward2 = new mongoose.Types.ObjectId('665a9f7eea43b80cbdf2e128');
 
     const rewards = [
       {
@@ -145,11 +146,6 @@ export class EventRepository {
         rewardItemIds: [idRewardItem2],
       },
     ];
-
-    const createdRewards = await this.rewardModel.insertMany(rewards);
-
-    const idEvent1 = new mongoose.Types.ObjectId('665a9f7eea43b80cbdf2e129');
-    const idEvent2 = new mongoose.Types.ObjectId('665a9f7eea43b80cbdf2e130');
 
     const events = [
       {
@@ -167,9 +163,9 @@ export class EventRepository {
       },
       {
         _id: idEvent2,
-        title: '현충일 이벤트',
+        title: '현충일 로그인 이벤트',
         description:
-          '나라를 위해 희생한 영웅들을 위해 개최하는 이벤트. 이날 로그인 하면 부채 7개를 보상으로 드립니다.',
+          '당일 로그인 하면 국화꽃 7개를 보상으로 제공하는 이벤트입니다.',
         category: EventCategory.LOGIN,
         status: EventStatusType.OFF,
         triggerType: EventTriggerType.SINGLE,
@@ -180,6 +176,9 @@ export class EventRepository {
       },
     ];
 
+    const createdRewardItems =
+      await this.rewardItemModel.insertMany(rewardItems);
+    const createdRewards = await this.rewardModel.insertMany(rewards);
     const createdEvents = await this.eventModel.insertMany(events);
 
     const result = {
