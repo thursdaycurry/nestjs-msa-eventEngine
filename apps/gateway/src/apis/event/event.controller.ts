@@ -112,13 +112,11 @@ export class EventController {
     name: 'eventType',
     required: false,
     type: String,
-    example: 'LOGIN',
   })
   @ApiQuery({
     name: 'eventId',
     required: false,
     type: String,
-    example: '665a9f7eea43b80cbdf2e129',
   })
   @ApiQuery({
     name: 'finalClaimStatus',
@@ -130,7 +128,6 @@ export class EventController {
     name: 'userId',
     required: false,
     type: String,
-    example: '665a9f7eea43b80cbdf2e129',
   })
   @ApiBearerAuth('access-token')
   @UseGuards(JwtAuthGuard, RolesGuard)
@@ -177,13 +174,13 @@ export class EventController {
   @ApiParam({
     name: 'eventId',
     type: String,
-    description: '보상을 추가할 eventId',
+    description: '수정할 eventId',
     example: '665a9f7eea43b80cbdf2e129',
   })
   @ApiParam({
     name: 'rewardId',
     type: String,
-    description: '보상을 추가할 rewardId',
+    description: 'event에 추가할 rewardId',
     example: '665a9f7eea43b80cbdf2e128',
   })
   @ApiBearerAuth('access-token')
