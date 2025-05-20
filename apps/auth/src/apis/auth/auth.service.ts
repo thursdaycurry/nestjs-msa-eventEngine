@@ -20,8 +20,8 @@ export class AuthService {
     const { email, password, name, loginType, role } = createUserDto;
 
     const foundUser = await this.authRepository.findByEmail(email);
-    const isUserExist = !!foundUser;
 
+    const isUserExist = !!foundUser;
     if (isUserExist) {
       throw new ConflictException('User already exists');
     }
@@ -53,30 +53,18 @@ export class AuthService {
 
     const foundUser: User | null = await this.authRepository.findByEmail(email);
 
-    // User validation
     const isUserExist: boolean = !!foundUser;
+    if (!isUserExist) {
+      throw new NotFoundException('USER_NOT_FOUND');
+    }
+
     const isPasswordMatched: boolean = await comparePassword(
-      password as string,
+      password,
       foundUser?.password as string,
     );
-
-    let processCode: string | null = '';
-
-    if (!isUserExist) {
-      processCode = 'USER_NOT_FOUND';
-      throw new NotFoundException(processCode);
-    } else if (!isPasswordMatched) {
-      processCode = 'PASSWORD_NOT_MATCHED';
-      throw new BadRequestException(processCode);
-    } else {
-      processCode = 'SUCCESS';
+    if (!isPasswordMatched) {
+      throw new BadRequestException('PASSWORD_NOT_MATCHED');
     }
-
-    if (processCode !== 'SUCCESS') {
-      throw new Error(processCode);
-    }
-
-    // JWT
 
     const coreUserInfo = {
       userId: foundUser?.id,
@@ -89,7 +77,7 @@ export class AuthService {
       sub: foundUser?.id,
       ...coreUserInfo,
     };
-    const access_token: string = await this.generateAccessToken(payload);
+    const access_token: string = this.generateAccessToken(payload);
 
     return {
       access_token,
@@ -99,8 +87,8 @@ export class AuthService {
 
   async getUser(userId) {
     const foundUser = await this.authRepository.findById(userId);
-    const isUserExist: boolean = !!foundUser;
 
+    const isUserExist: boolean = !!foundUser;
     if (!isUserExist) {
       throw new NotFoundException('USER_NOT_FOUND');
     }
@@ -120,8 +108,8 @@ export class AuthService {
     const { userId, newRole } = updateUserRoleDto;
 
     const foundUser = await this.authRepository.findById(userId);
-    const isUserExist: boolean = !!foundUser;
 
+    const isUserExist: boolean = !!foundUser;
     if (!isUserExist) {
       throw new NotFoundException('USER_NOT_FOUND');
     }
@@ -143,16 +131,15 @@ export class AuthService {
     return result;
   }
 
-  private async generateAccessToken(payload): Promise<string> {
-    return await this.jwtService.sign(payload);
-  }
-
   async getUserLoginHistory(getUserLoginHistoryDto) {
     const userLoginHistory = await this.authRepository.getUserLoginHistory(
       getUserLoginHistoryDto,
     );
-
     return userLoginHistory;
+  }
+
+  private generateAccessToken(payload): string {
+    return this.jwtService.sign(payload);
   }
 
   async seedAuth() {

@@ -14,12 +14,12 @@ export class AuthRepository {
     private readonly authEventModel: Model<AuthEvent>,
   ) {}
 
-  async findByEmail(email: string): Promise<User | null> {
-    return this.userModel.findOne({ email });
-  }
-
   async findById(id: string): Promise<User | null> {
     return this.userModel.findById(id);
+  }
+
+  async findByEmail(email: string): Promise<User | null> {
+    return this.userModel.findOne({ email });
   }
 
   async createUser(createUserDto): Promise<User> {
@@ -40,11 +40,6 @@ export class AuthRepository {
     return this.userModel.findByIdAndUpdate(userId, { role: newRole });
   }
 
-  async recordAuthLog(authEventDto) {
-    const createdAuthEvent = new this.authEventModel(authEventDto);
-    return createdAuthEvent.save();
-  }
-
   async getUserLoginHistory(getUserLoginHistoryDto) {
     const { userId, startDate, endDate } = getUserLoginHistoryDto;
 
@@ -60,43 +55,17 @@ export class AuthRepository {
     return userLoginHistory;
   }
 
+  async recordAuthLog(authEventDto) {
+    const createdAuthEvent = new this.authEventModel(authEventDto);
+    return createdAuthEvent.save();
+  }
+
   // for test
   async seedAuth() {
     const idUser = new mongoose.Types.ObjectId('665a9f7eea43b80cbdf2e111');
     const idOperator = new mongoose.Types.ObjectId('665a9f7eea43b80cbdf2e112');
     const idAuditor = new mongoose.Types.ObjectId('665a9f7eea43b80cbdf2e113');
     const idAdmin = new mongoose.Types.ObjectId('665a9f7eea43b80cbdf2e114');
-
-    const idAuthEvent1 = new mongoose.Types.ObjectId(
-      '665a9f7eea43b80cbdf2e115',
-    );
-    const idAuthEvent2 = new mongoose.Types.ObjectId(
-      '665a9f7eea43b80cbdf2e116',
-    );
-    const idAuthEvent3 = new mongoose.Types.ObjectId(
-      '665a9f7eea43b80cbdf2e117',
-    );
-    const idAuthEvent4 = new mongoose.Types.ObjectId(
-      '665a9f7eea43b80cbdf2e118',
-    );
-    const idAuthEvent5 = new mongoose.Types.ObjectId(
-      '665a9f7eea43b80cbdf2e119',
-    );
-    const idAuthEvent6 = new mongoose.Types.ObjectId(
-      '665a9f7eea43b80cbdf2e120',
-    );
-    const idAuthEvent7 = new mongoose.Types.ObjectId(
-      '665a9f7eea43b80cbdf2e121',
-    );
-    const idAuthEvent8 = new mongoose.Types.ObjectId(
-      '665a9f7eea43b80cbdf2e122',
-    );
-    const idAuthEvent9 = new mongoose.Types.ObjectId(
-      '665a9f7eea43b80cbdf2e123',
-    );
-    const idAuthEvent10 = new mongoose.Types.ObjectId(
-      '665a9f7eea43b80cbdf2e124',
-    );
 
     const hashedPassword = await hashPassword('mypassword');
 
