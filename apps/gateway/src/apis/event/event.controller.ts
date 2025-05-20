@@ -122,7 +122,7 @@ export class EventController {
     name: 'finalClaimStatus',
     required: false,
     type: String,
-    example: 'CLAIMED',
+    example: 'SUCCESS',
   })
   @ApiQuery({
     name: 'userId',
