@@ -78,11 +78,6 @@ export class EventRepository {
     return await rewardItem.save();
   }
 
-  async recordEventLog(eventLogDto) {
-    const eventLog = new this.eventLogModel(eventLogDto);
-    return await eventLog.save();
-  }
-
   async findEventLog(eventLogDto) {
     const eventLog = await this.eventLogModel.findOne(eventLogDto).exec();
     return eventLog;
@@ -91,6 +86,11 @@ export class EventRepository {
   async findAllEventLog(eventLogDto) {
     const eventLog = await this.eventLogModel.find(eventLogDto).exec();
     return eventLog;
+  }
+
+  async recordEventLog(eventLogDto) {
+    const eventLog = new this.eventLogModel(eventLogDto);
+    return await eventLog.save();
   }
 
   async findEventRewardClaimHistory(eventId: string, userId: string) {

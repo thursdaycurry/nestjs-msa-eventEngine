@@ -21,6 +21,104 @@ export class EventService {
     @Inject('AUTH_SERVICE') private authClient: ClientProxy,
   ) {}
 
+  async getEventList() {
+    const eventList = await this.eventRepository.getEventList();
+    return eventList;
+  }
+
+  async getEventDetail(eventId: string) {
+    const eventDetail = await this.eventRepository.getEventDetail(eventId);
+    return eventDetail;
+  }
+
+  async createEvent(createEventDto) {
+    const {
+      category,
+      title,
+      description,
+      startDate,
+      endDate,
+      triggerType,
+      goal,
+      rewardIds,
+    } = createEventDto;
+
+    const status = calcStatus(startDate, endDate);
+
+    const event = await this.eventRepository.createEvent({
+      category,
+      title,
+      description,
+      startDate,
+      endDate,
+      triggerType,
+      goal,
+      rewardIds,
+      status,
+    });
+    return event;
+  }
+
+  async getReward(rewardId: string) {
+    const reward = await this.eventRepository.findRewardById(rewardId);
+
+    return reward;
+  }
+
+  async createReward(createRewardDto) {
+    const { title, description, rewardItemIds } = createRewardDto;
+
+    const reward = await this.eventRepository.createReward({
+      title,
+      description,
+      rewardItemIds,
+    });
+
+    return reward;
+  }
+
+  async addRewardToEvent(eventId: string, rewardId: string) {
+    const foundEvent = await this.eventRepository.findEventById(eventId);
+    if (!foundEvent) {
+      throw new NotAcceptableException('Event not found');
+    }
+
+    const isDuplicatedReward = foundEvent.rewardIds.includes(rewardId);
+    if (isDuplicatedReward) {
+      throw new NotAcceptableException('Event already has this reward');
+    }
+
+    foundEvent.rewardIds.push(rewardId);
+    const modifiedEvent = await foundEvent.save();
+
+    return modifiedEvent;
+  }
+
+  async createRewardItem(createRewardItemDto) {
+    const rewardItem =
+      await this.eventRepository.createRewardItem(createRewardItemDto);
+
+    return rewardItem;
+  }
+
+  async addRewardItemToReward(rewardId: string, rewardItemId: string) {
+    const foundReward = await this.eventRepository.findRewardById(rewardId);
+    if (!foundReward) {
+      throw new Error('Reward not found');
+    }
+
+    const isDuplicatedRewardItem =
+      foundReward.rewardItemIds.includes(rewardItemId);
+    if (isDuplicatedRewardItem) {
+      throw new Error('Reward already has this reward item');
+    }
+
+    foundReward.rewardItemIds.push(rewardItemId);
+    const modifiedReward = await foundReward.save();
+
+    return modifiedReward;
+  }
+
   async claimReward(eventId: string, userId: string) {
     let finalClaimStatus: ClaimStatus;
     let message: string = '';
@@ -77,6 +175,8 @@ export class EventService {
 
       finalClaimStatus = ClaimStatus.SUCCESS;
       message = 'Claim was successful';
+
+      // + 실제 유저 인벤토리에 reward 추가하는 로직 이벤트 emit 구현
     } catch (error) {
       finalClaimStatus = ClaimStatus.FAILURE;
       message = error?.message;
@@ -106,106 +206,7 @@ export class EventService {
     return claimHistory;
   }
 
-  async getEventList() {
-    const eventList = await this.eventRepository.getEventList();
-    return eventList;
-  }
-
-  async getEventDetail(eventId: string) {
-    const eventDetail = await this.eventRepository.getEventDetail(eventId);
-    return eventDetail;
-  }
-
-  async createEvent(createEventDto) {
-    const {
-      category,
-      title,
-      description,
-      startDate,
-      endDate,
-      triggerType,
-      goal,
-      rewardIds,
-    } = createEventDto;
-
-    const status = calcStatus(startDate, endDate);
-
-    const event = await this.eventRepository.createEvent({
-      category,
-      title,
-      description,
-      startDate,
-      endDate,
-      triggerType,
-      goal,
-      rewardIds,
-      status,
-    });
-    return event;
-  }
-
-  async addRewardToEvent(eventId: string, rewardId: string) {
-    const foundEvent = await this.eventRepository.findEventById(eventId);
-    if (!foundEvent) {
-      throw new Error('Event not found');
-    }
-
-    const isDuplicatedReward = foundEvent.rewardIds.includes(rewardId);
-    if (isDuplicatedReward) {
-      throw new Error('Event already has this reward');
-    }
-
-    foundEvent.rewardIds.push(rewardId);
-
-    const modifiedEvent = await foundEvent.save();
-
-    return modifiedEvent;
-  }
-
-  async getReward(rewardId: string) {
-    const reward = await this.eventRepository.findRewardById(rewardId);
-    return reward;
-  }
-
-  async createReward(createRewardDto) {
-    const { title, description, rewardItemIds } = createRewardDto;
-
-    const reward = await this.eventRepository.createReward({
-      title,
-      description,
-      rewardItemIds,
-    });
-
-    return reward;
-  }
-
-  async createRewardItem(createRewardItemDto) {
-    const rewardItem =
-      await this.eventRepository.createRewardItem(createRewardItemDto);
-
-    return rewardItem;
-  }
-
-  async addRewardItemToReward(rewardId: string, rewardItemId: string) {
-    const foundReward = await this.eventRepository.findRewardById(rewardId);
-    if (!foundReward) {
-      throw new Error('Reward not found');
-    }
-
-    const isDuplicatedRewardItem =
-      foundReward.rewardItemIds.includes(rewardItemId);
-    if (isDuplicatedRewardItem) {
-      throw new Error('Reward already has this reward item');
-    }
-
-    foundReward.rewardItemIds.push(rewardItemId);
-
-    const modifiedReward = await foundReward.save();
-
-    return modifiedReward;
-  }
-
-  async calcTriggerSatisfied({
+  private async calcTriggerSatisfied({
     userId,
     category,
     triggerType,
@@ -223,25 +224,12 @@ export class EventService {
     let isTriggerSatisfied = false;
 
     switch (category) {
-      case EventCategory.LOGIN:
-        const userLoginHistory = await firstValueFrom(
-          this.authClient.send(
-            {
-              cmd: 'getUserLoginHistory',
-            },
-            { userId, startDate, endDate },
-          ),
+      case EventCategory.LOGIN: {
+        const userLoginCount = await this.getUniqueDayCount(
+          userId,
+          startDate,
+          endDate,
         );
-
-        const uniqueDayArr = Array.from(
-          new Set(
-            userLoginHistory.map((log) =>
-              moment(log.createdAt).format('YYYY-MM-DD'),
-            ),
-          ),
-        );
-
-        const userLoginCount = uniqueDayArr.length;
 
         if (triggerType === EventTriggerType.SINGLE) {
           isTriggerSatisfied = userLoginCount > 0;
@@ -251,7 +239,12 @@ export class EventService {
           isTriggerSatisfied = userLoginCount >= goal;
         }
 
+        // ADD more trigger type
+
         break;
+      }
+
+      // Add more Event Category
 
       default:
         throw new NotAcceptableException(
@@ -260,6 +253,27 @@ export class EventService {
     }
 
     return isTriggerSatisfied;
+  }
+
+  async getUniqueDayCount(userId: string, startDate: Date, endDate: Date) {
+    const userLoginHistory = await firstValueFrom(
+      this.authClient.send(
+        {
+          cmd: 'getUserLoginHistory',
+        },
+        { userId, startDate, endDate },
+      ),
+    );
+
+    const uniqueDayArr = Array.from(
+      new Set(
+        userLoginHistory.map((log) =>
+          moment(log.createdAt).format('YYYY-MM-DD'),
+        ),
+      ),
+    );
+
+    return uniqueDayArr.length;
   }
 
   async seedEvent() {
